@@ -1,105 +1,51 @@
-<!--
 <!DOCTYPE html>
-<!--!-->
 <html>
- 
-    <head>
-        <meta charset="utf-8" />
-        <title>TP Javascript</title>
-        <style>
-            div.terrain{
-                background:  #4b9898 ;
-                border-radius: 0px;
-                border-color : #CCC;
-                width: 800px;
-                height: 500px;
-                position:  absolute; 
-                top: 0px;
-                left: 0px;
-                margin:0px;
-            }
-            div.serpent{
-                background: black;
-                border-radius: 4px;
-                width: 30px;
-                height: 30px;
-                position:  absolute; 
-                top: 10px;
-                left: 10px;
-                margin:0px;
-            }
-            div.fruit{
-                background: #FFCC00;
-                border-radius: 4px;
-                width: 10px;
-                height: 10px;
-                position:  absolute; 
-                top: 200px;
-                left: 200px;
-                margin:0px;
-            }
-            form {
-                position:  absolute; 
-                top: 50px;
-                left: 820px;
-            }
-        </style>
-</head>
- 
-    <body>
-      
- 
-        <div class="terrain" id="terrain"></div>
-        <div class="serpent" id="c1"></div>
-        <script src="jeu.js"></script>
-             
-    </body>
-     
-</html><!-- This is a static file -->
-<!-- served from your routes in server.js -->
-<!DOCTYPE html>
-<html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="A cool thing made with Glitch">
-
-    <title>Welcome to Glitch!</title>
-
-    <link id="favicon" rel="icon" href="https://glitch.com/edit/favicon-app.ico" type="image/x-icon">
-    <!-- import the webpage's stylesheet -->
-    <link rel="stylesheet" href="/style.css">
-
-    <!-- import the webpage's client-side javascript file -->
-    <script src="/script.js" defer></script>
+    <meta charset="UTF-8">
+    <title>déplacer un élément avec les flèches du clavier</title>
+    <style type="text/css">
+      .myDiv {
+          width: 150px;
+          height: 53px;
+          position: relative;
+          margin: 100px auto 0;
+          background: url("https://1.bp.blogspot.com/-I-a7SivlqkY/XR1iGIJh0FI/AAAAAAAAFEk/ynto7iWeqxkjhxH5UDMywUYHad3fFMHTACLcBGAs/s1600/carr2.png");
+          background-repeat: no-repeat;
+          background-color:  #4b9898 ;
+      }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript">
+      $(document).keydown(function(e){
+          switch (e.which){
+                case 37:    // flèche gauche
+                  $(".myDiv").finish().animate({
+                  left: "-=10"
+                });
+                break;
+                case 38:    // flèche haut
+                  $(".myDiv").finish().animate({
+                  top: "-=10"
+                });
+                break;
+                case 39:    // flèche droite
+                  $(".myDiv").finish().animate({
+                  left: "+=10"
+                });
+                break;
+                case 40:    // flèche du bas
+                  $(".myDiv").finish().animate({
+                  top: "+=10"
+                });
+                break;
+          }
+      });
+    </script>
   </head>
   <body>
-    <header>
-      <h1>BomberMan</h1>
-    </header>
-
-    <main>
-      <!-- Affiche la grille en HTML -->
-      <div class="grid-container">
-      <div class="grid-item"> </div>
-      <div class="grid-item"> </div>
-      <div class="grid-item"> </div>
-      <div class="grid-item"> </div>
-      <div class="grid-item"> </div>
-      <div class="grid-item"> </div>
-      <div class="grid-item"> </div>
-      <div class="grid-item"> </div>
-      <div class="grid-item"> </div>
-     </div> 
-     
-      
-      
-     <input type="text" onkeydown="myFunction()"> 
-      
-
-    <footer>Made with amour!</footer>
-    </main>
+    <canvas width="500" height="500" id="map"></canvas>
+    
+    <p><b>Cliquez ici pour déplacer l'objet.</b></p>
+    <div class="myDiv"></div>
   </body>
 </html>
-
