@@ -1,23 +1,30 @@
+// representation de notre map Bomberman 
 class Map {
-  constructor(x,y) {
-    
+  constructor(x, y) {
+    this.height = x;
+    this.width = y;
   }
-}
-
-function draw() {
-  const canvas = document.getElementById("map");
+//dessiner la map 
+  draw() {
+    const canvas = document.getElementById("map");
     if (!canvas.getContext) {
-        return;
+      return;
     }
 
     // get the context
-    let ctx = canvas.getContext('2d');
+    let context = canvas.getContext("2d");
 
     // set fill and stroke styles
-    ctx.fillStyle = '#F0DB4F';
-    ctx.strokeStyle = 'red';
+    context.lineWidth=2;
+    context.fillStyle = "#F0DB4F";
+    context.strokeStyle = "red";
 
     // draw a rectangle with fill and stroke
-    ctx.fillRect(50, 50, 150, 100);
-    ctx.strokeRect(50, 50, 150, 100);
+    for( var i = 0; i < height; i++)
+    context.fillRect(50, 50, 150, 100);
+    context.strokeRect(50, 50, 150, 100);
+  }
 }
+// appel pour l'afficher 
+let map1 = new Map(10,10);
+map1.draw();
