@@ -52,6 +52,21 @@ fetch("/dreams")
   });
 
 
-class Test {
+Map.prototype={ 
+    build:function(){  
+        for(var y=0;y< maxY;y++){ 
+            for(var x=0;x< maxX;x++){ 
+                if(this.tMap[y] && this.tMap[y][x]){ 
+                    //on dessine sur le canvas la valeur du tableau 
+                    this.drawImage( this.tMap[y][x] ,x,y); 
+                } 
+            }    
+        }  
+    }, 
+    //la methode pour dessiner sur le canvas 
+    drawImage:function(iImg,x,y){ 
+        console.log(this.tImg[iImg]); 
+        oImages.drawImageOnLayer(this.tImg[iImg],x*widthCase,y*heightCase,widthCase,widthCase,'map'); 
+    }, 
   
-}
+};
