@@ -1,4 +1,60 @@
-<!-- This is a static file -->
+<!DOCTYPE html>
+<!--!-->
+<html>
+ 
+    <head>
+        <meta charset="utf-8" />
+        <title>TP Javascript</title>
+        <style>
+            div.terrain{
+                background: green;
+                border-radius: 0px;
+                border-color : #CCC;
+                width: 800px;
+                height: 500px;
+                position:  absolute; 
+                top: 0px;
+                left: 0px;
+                margin:0px;
+            }
+            div.serpent{
+                background: #660000;
+                border-radius: 4px;
+                width: 30px;
+                height: 30px;
+                position:  absolute; 
+                top: 10px;
+                left: 10px;
+                margin:0px;
+            }
+            div.fruit{
+                background: #FFCC00;
+                border-radius: 4px;
+                width: 10px;
+                height: 10px;
+                position:  absolute; 
+                top: 200px;
+                left: 200px;
+                margin:0px;
+            }
+            form {
+                position:  absolute; 
+                top: 50px;
+                left: 820px;
+            }
+        </style>
+</head>
+ 
+    <body>
+      
+ 
+        <div class="terrain" id="terrain"></div>
+        <div class="serpent" id="c1"></div>
+        <script src="jeu.js"></script>
+             
+    </body>
+     
+</html><!-- This is a static file -->
 <!-- served from your routes in server.js -->
 <!DOCTYPE html>
 <html lang="en">

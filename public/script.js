@@ -14,6 +14,17 @@ function appendNewDream(dream) {
   dreamsList.appendChild(newListItem);
 }
 
+let leftPos = 0;
+let dep = 0;
+
+function avancer(){
+    leftPos+=dep
+    console.log(leftPos)
+   document.getElementById("serpent").style.left=leftPos+"px"
+}
+
+
+
 // fetch the initial list of dreams
 fetch("/dreams")
   .then(response => response.json()) // parse the JSON from the server
@@ -39,3 +50,8 @@ fetch("/dreams")
       dreamsForm.elements.dream.focus();
     });
   });
+
+
+class Test {
+  
+}
