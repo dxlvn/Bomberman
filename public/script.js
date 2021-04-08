@@ -50,8 +50,8 @@ fetch("/dreams")
     });
   });
 
- src="https://code.jquery.com/jquery-3.2.1.min.js"
-    <script type="text/javascript">
+ //src="https://code.jquery.com/jquery-3.2.1.min.js"
+    //
       $(document).keydown(function(e){
           switch (e.which){
                 case 37:    // flèche gauche
@@ -76,6 +76,6 @@ fetch("/dreams")
                 break;
           }
       });
-    </script>
-     <script type = "text/javascript" src="script.js"></script>
+
+      //type = "text/javascript" src="script.js"
 

@@ -1,25 +1,19 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>déplacer un élément avec les flèches du clavier</title>
-    <style type="text/css">
-      .myDiv {
-          width: 90px;
-          height: 128px;
-          position: relative;
-          margin: 100px auto 0;
-          background: url("data:image/jpeg;base64,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");
-          background-repeat: no-repeat;
-          background-color:  #4b9898 ;
-      }
-    </style>
+
+    <style type="text/css" href="syle.js"></style>
+
+    <script type="text/js" src="map.js"></script>
+    <script type="text/js" src="script.js"></script>
     
   </head>
   <body>
     <canvas width="500" height="500" id="map"></canvas>
-    <input type = "button" onclick = "draw()" value = "Display">
-    
+    <input type="button" onclick="draw()" value="Display" />
+
     <p><b>Cliquez ici pour déplacer l'objet.</b></p>
     <div class="myDiv"></div>
   </body>
