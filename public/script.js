@@ -24,7 +24,6 @@ function avancer(){
 }
 
 
-
 // fetch the initial list of dreams
 fetch("/dreams")
   .then(response => response.json()) // parse the JSON from the server
@@ -51,22 +50,32 @@ fetch("/dreams")
     });
   });
 
+ src="https://code.jquery.com/jquery-3.2.1.min.js"
+    <script type="text/javascript">
+      $(document).keydown(function(e){
+          switch (e.which){
+                case 37:    // flèche gauche
+                  $(".myDiv").finish().animate({
+                  left: "-=10"
+                });
+                break;
+                case 38:    // flèche haut
+                  $(".myDiv").finish().animate({
+                  top: "-=10"
+                });
+                break;
+                case 39:    // flèche droite
+                  $(".myDiv").finish().animate({
+                  left: "+=10"
+                });
+                break;
+                case 40:    // flèche du bas
+                  $(".myDiv").finish().animate({
+                  top: "+=10"
+                });
+                break;
+          }
+      });
+    </script>
+     <script type = "text/javascript" src="script.js"></script>
 
-Map.prototype={ 
-    build:function(){  
-        for(var y=0;y< maxY;y++){ 
-            for(var x=0;x< maxX;x++){ 
-                if(this.tMap[y] && this.tMap[y][x]){ 
-                    //on dessine sur le canvas la valeur du tableau 
-                    this.drawImage( this.tMap[y][x] ,x,y); 
-                } 
-            }    
-        }  
-    }, 
-    //la methode pour dessiner sur le canvas 
-    drawImage:function(iImg,x,y){ 
-        console.log(this.tImg[iImg]); 
-        oImages.drawImageOnLayer(this.tImg[iImg],x*widthCase,y*heightCase,widthCase,widthCase,'map'); 
-    }, 
-  
-};
