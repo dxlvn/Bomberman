@@ -1,5 +1,11 @@
+class Map {
+  constructor(x,y) {
+    
+  }
+}
+
 function draw() {
-  const canvas = document.getById("map");
+  const canvas = document.getElementById("map");
     if (!canvas.getContext) {
         return;
     }
