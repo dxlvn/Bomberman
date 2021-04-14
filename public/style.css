@@ -21,8 +21,9 @@ h1 {
 canvas {
     margin: auto;
     display: block;
-  witdh
+  height: 100%;
 }
+
 /* permet d'afficher un objet*/
 .myDiv {
     width: 150px;
