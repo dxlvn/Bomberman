@@ -11,9 +11,10 @@ class Personnage {
   }
 
   move(xDep, yDep) {
-    if (this.x + xDep > 0 && this.y + yDep > 0)
-    this.x += xDep;
-    this.y += yDep;
+    if (map1.isCaseLibre(this.x + xDep, this.y + yDep)) {
+      this.x += xDep;
+      this.y += yDep;
+    }
   }
 
   draw() {
@@ -47,6 +48,19 @@ class Map {
     }
     this.size = size_case;
   }
+  
+  isCaseLibre(x, y) {
+    if (x < 0 && y < 0) {
+      return false;
+    }
+    console.log("Test " + this.p[1][1]);
+    console.log((x/20)+" "+(y/20));
+    if (this.p[x/20][y/20] != 1) {
+      return true;
+    }
+    return false;
+  }
+  
   //dessiner la map
   draw() {
     // set fill and stroke styles
