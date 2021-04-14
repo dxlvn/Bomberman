@@ -36,9 +36,9 @@ class Map {
     this.height = y;
     this.width = x;
     this.p = [];
-    for (let i = 0; i < this.height; i++) {
+    for (let i = 0; i < this.width; i++) {
       this.p[i] = [];
-      for (let j = 0; j < this.width; j++) {
+      for (let j = 0; j < this.height; j++) {
         this.p[i][j] = 0;
         if (i % 2 == 1 && j % 2 == 1) {
           this.p[i][j] = 1;
@@ -49,12 +49,13 @@ class Map {
   }
   
   isCaseLibre(x, y) {
-    if (x < 0 || y < 0 || x > (this.width-1) * this.size || y > (this.height-1) * this.size) {
+    if (x < 0 || y < 0 || (x + perso1.size)/20 > this.width || (y + perso1.size)/20 > this.height) {
       return false;
     }
     console.log(" ");
     console.log(this.width + " " + this.height);
     console.log(Math.floor(x/20) + " " + Math.floor(y/20));
+    console.log(this.p[Math.floor(x/20)].length);
     console.log(this.p[Math.floor(x/20)][Math.floor(y/20)]);
     if (this.p[Math.floor(x/20)][Math.floor(y/20)] == 1) {
       return false;
@@ -78,10 +79,10 @@ class Map {
     context.strokeStyle = "black";
 
     // draw a rectangle with fill and stroke
-    for (var i = 0; i < this.height; i++) {
-      for (var j = 0; j < this.width; j++) {
-        var x_case = j * this.size;
-        var y_case = i * this.size;
+    for (var i = 0; i < this.width; i++) {
+      for (var j = 0; j < this.height; j++) {
+        var x_case = i * this.size;
+        var y_case = j * this.size;
         if (this.p[i][j] == 1) {
           context.fillStyle = "black";
         } else {
