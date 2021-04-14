@@ -3,17 +3,34 @@ const canvas = document.getElementById("map");
 var context = canvas.getContext("2d");
 
 class Personnage {
-  constructor(x, y, size) {
+  constructor(x, y, dep, size) {
     this.x = x;
     this.y = y;
+    this.dep = dep;
     this.size = size;
   }
-  
+
   move(xDep, yDep) {
     this.x += xDep;
     this.y += yDep;
   }
   
+  doKeyDown(evt) {
+  if (evt.keyCode == 37) {
+    this.move(-perso1.dep, 0);
+    modele.draw();
+  } else if (evt.keyCode == 38) {
+    this.move(0, -perso1.dep);
+    modele.draw();
+  } else if (evt.keyCode == 39) {
+    perso1.move(perso1.dep, 0);
+    modele.draw();
+  } else if (evt.keyCode == 40) {
+    perso1.move(0, perso1.dep);
+    modele.draw();
+  }
+}
+
   draw() {
     // set fill and stroke styles
     context.lineWidth = 2;
@@ -37,8 +54,8 @@ class Map {
       this.p[i] = [];
       for (let j = 0; j < this.width; j++) {
         let content = 0;
-        if (i %2 == 1 && j%2 == 1) {
-            content = 1;
+        if (i % 2 == 1 && j % 2 == 1) {
+          content = 1;
         }
         this.p[i][j] = content;
       }
@@ -69,14 +86,13 @@ class Map {
   }
 }
 
-
 // representation de notre map Bomber's
 class Modele {
   constructor(m, p) {
     this.map = m;
     this.perso = p;
   }
-  
+
   //dessiner la map
   draw() {
     this.map.draw();
@@ -84,27 +100,29 @@ class Modele {
   }
 }
 
-// appel pour l'afficher
-var perso1 = new Personnage(0, 0, 15);
-var map1 = new Map(11, 11, 20);
-var modele = new Modele(map1, perso1);
 
-function doKeyDown(evt){
-  if (evt.keyCode == 32) {
-    perso1.move(0, -1);
+
+function doKeyDown(evt) {
+  if (evt.keyCode == 37) {
+    perso1.move(-perso1.dep, 0);
     modele.draw();
   } else if (evt.keyCode == 38) {
-    perso1.move(0, 1);
-    modele.draw();
-  } else if (evt.keyCode == 40) {
-    perso1.move(-1, 0);
+    perso1.move(0, -perso1.dep);
     modele.draw();
   } else if (evt.keyCode == 39) {
-    perso1.move(1, 0);
+    perso1.move(perso1.dep, 0);
+    modele.draw();
+  } else if (evt.keyCode == 40) {
+    perso1.move(0, perso1.dep);
     modele.draw();
   }
 }
 
-window.addEventListener('keydown',doKeyDown,true);
+// appel pour l'afficher
+var perso1 = new Personnage(0, 0, 5, 15);
+var map1 = new Map(11, 11, 20);
+var modele = new Modele(map1, perso1);
+
+window.addEventListener("keydown", doKeyDown, true);
 
 modele.draw();
