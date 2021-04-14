@@ -1,4 +1,4 @@
-// representation de notre map Bomberman
+// representation de notre map Bomber's
 class Map {
   constructor(x, y, size_case) {
     this.height = x;
