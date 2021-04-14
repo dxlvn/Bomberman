@@ -11,25 +11,10 @@ class Personnage {
   }
 
   move(xDep, yDep) {
+    if (this.x + xDep > 0 && this.y + yDep > 0)
     this.x += xDep;
     this.y += yDep;
   }
-  
-  doKeyDown(evt) {
-  if (evt.keyCode == 37) {
-    this.move(-perso1.dep, 0);
-    modele.draw();
-  } else if (evt.keyCode == 38) {
-    this.move(0, -perso1.dep);
-    modele.draw();
-  } else if (evt.keyCode == 39) {
-    perso1.move(perso1.dep, 0);
-    modele.draw();
-  } else if (evt.keyCode == 40) {
-    perso1.move(0, perso1.dep);
-    modele.draw();
-  }
-}
 
   draw() {
     // set fill and stroke styles
