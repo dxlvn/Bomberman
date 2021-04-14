@@ -1,3 +1,7 @@
+const canvas = document.getElementById("map");
+// get the context
+var context = canvas.getContext("2d");
+
 class Personnage {
   constructor(x, y, size) {
     this.x = x;
@@ -5,15 +9,12 @@ class Personnage {
     this.size = size;
   }
   
+  move(xDep, yDep) {
+    this.x += xDep;
+    this.y += yDep;
+  }
+  
   draw() {
-    const canvas = document.getElementById("map");
-    if (!canvas.getContext) {
-      return;
-    }
-
-    // get the context
-    let context = canvas.getContext("2d");
-
     // set fill and stroke styles
     context.lineWidth = 2;
     context.fillStyle = "red";
@@ -33,14 +34,6 @@ class Map {
   }
   //dessiner la map
   draw() {
-    const canvas = document.getElementById("map");
-    if (!canvas.getContext) {
-      return;
-    }
-
-    // get the context
-    let context = canvas.getContext("2d");
-
     // set fill and stroke styles
     context.lineWidth = 2;
     context.fillStyle = "white";
@@ -72,6 +65,7 @@ class Modele {
     this.perso.draw();
   }
 }
+
 // appel pour l'afficher
 let perso1 = new Personnage(0, 0, 15);
 let map1 = new Map(10, 10, 20);
