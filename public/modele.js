@@ -21,7 +21,7 @@ class Personnage {
     context.strokeStyle = "red";
 
     // draw a rectangle with fill and stroke
-        context.fillRect(this.x, this.y, this.size, this.size);
+    context.fillRect(this.x, this.y, this.size, this.size);
   }
 }
 
@@ -30,6 +30,15 @@ class Map {
   constructor(x, y, size_case) {
     this.height = x;
     this.width = y;
+    this.p = [];
+    for (let i = 0; i < this.height; i++) {
+      this.p[i] = [];
+      for (let j = 0; j < this.width; j++) {
+        let 
+        if
+        this.p[i][j] = this.i * 100 + this.j;
+      }
+    }
     this.size = size_case;
   }
   //dessiner la map
@@ -46,6 +55,7 @@ class Map {
         var y_case = i * this.size;
         context.fillRect(x_case, y_case, this.size, this.size);
         context.strokeRect(x_case, y_case, this.size, this.size);
+        console.log(this.p[i][j]);
       }
     }
   }

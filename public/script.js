@@ -1,5 +1,3 @@
-perso1.move(100, 0);
-
 $(document).keydown(function(e){
     switch (e.which){
     case 37:    // flèche gauche
