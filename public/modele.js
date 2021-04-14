@@ -31,30 +31,31 @@ class Personnage {
 // representation de notre map Bomber's
 class Map {
   constructor(x, y, size_case) {
-    canvas.width = y * size_case;
-    canvas.height = x * size_case;
-    this.height = x;
-    this.width = y;
+    canvas.width = x * size_case;
+    canvas.height = y * size_case;
+    this.height = y;
+    this.width = x;
     this.p = [];
     for (let i = 0; i < this.height; i++) {
       this.p[i] = [];
       for (let j = 0; j < this.width; j++) {
-        let content = 0;
+        this.p[i][j] = 0;
         if (i % 2 == 1 && j % 2 == 1) {
-          content = 1;
+          this.p[i][j] = 1;
         }
-        this.p[i][j] = content;
       }
     }
     this.size = size_case;
   }
   
   isCaseLibre(x, y) {
-    if (x < 0 || y < 0 || x > height || y > width) {
+    if (x < 0 || y < 0 || x > this.width * this.size_case || y > this.height * this.size_case) {
       return false;
     }
+    console.log("");
     console.log(Math.floor(x/20) + " " + Math.floor(y/20));
     console.log(Math.floor((x + perso1.size) /20)+ " " + Math.floor(y/20));
+    console.log(this.p[Math.floor(x/20)][Math.floor(y/20)]);
     if (this.p[Math.floor(x/20)][Math.floor(y/20)] == 1) {
       return false;
     } else if (this.p[Math.floor((x + perso1.size) /20)][Math.floor(y/20)] == 1) {
@@ -78,7 +79,7 @@ class Map {
 
     // draw a rectangle with fill and stroke
     for (var i = 0; i < this.height; i++) {
-      for (var j = 0; j < this.height; j++) {
+      for (var j = 0; j < this.width; j++) {
         var x_case = j * this.size;
         var y_case = i * this.size;
         if (this.p[i][j] == 1) {
@@ -127,7 +128,7 @@ function doKeyDown(evt) {
 
 // appel pour l'afficher
 var perso1 = new Personnage(0, 0, 4, 15);
-var map1 = new Map(11, 11, 20);
+var map1 = new Map(11, 15, 20);
 var modele = new Modele(map1, perso1);
 
 window.addEventListener("keydown", doKeyDown, true);
