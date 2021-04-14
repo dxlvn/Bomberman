@@ -42,7 +42,8 @@ class Modele {
   
   //dessiner la map
   draw() {
-    m.
+    map.draw();
+    perso.draw();
   }
 }
 // appel pour l'afficher
