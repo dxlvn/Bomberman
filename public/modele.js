@@ -28,7 +28,7 @@ class Personnage {
   }
 }
 
-// representation de notre map Bomber's
+// representation de la map Bomber's
 class Map {
   constructor(x, y, size_case) {
     canvas.width = x * size_case;

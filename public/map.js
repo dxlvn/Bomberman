@@ -1,4 +1,4 @@
-// representation de notre map Bomber's
+// representation de la map Bomber's
 class Map {
   constructor(x, y, size_case) {
     this.height = x;
@@ -31,6 +31,6 @@ class Map {
     }
   }
 }
-// appel pour l'afficher
+// appel pour l'affichage
 let map1 = new Map(10, 10, 20);
 map1.draw();
