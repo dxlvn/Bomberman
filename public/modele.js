@@ -67,7 +67,31 @@ class Modele {
 }
 
 // appel pour l'afficher
-let perso1 = new Personnage(0, 0, 15);
-let map1 = new Map(10, 10, 20);
-let modele = new Modele(map1, perso1);
+var perso1 = new Personnage(0, 0, 15);
+var map1 = new Map(10, 10, 20);
+var modele = new Modele(map1, perso1);
+
+function doKeyDown(evt){
+    switch (evt.keyCode) {
+      case 38:  /* Up arrow was pressed */
+        perso1.move(0, -1);
+        modele.draw();
+    break;
+    case 40:  /* Down arrow was pressed */
+        perso1.move(0, 1);
+        modele.draw();
+    break;
+    case 37:  /* Left arrow was pressed */
+        perso1.move(-1, 0);
+        modele.draw();
+    break;
+    case 39:  /* Right arrow was pressed */
+        perso1.move(1, 0);
+        modele.draw();
+    break;
+    }
+}
+
+window.addEventListener('keydown',doKeyDown,true);
+
 modele.draw();
