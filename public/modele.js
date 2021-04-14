@@ -49,12 +49,12 @@ class Map {
   }
   
   isCaseLibre(x, y) {
-    if (x < 0 || y < 0 || x > this.width * this.size_case || y > this.height * this.size_case) {
+    if (x < 0 || y < 0 || x > (this.width-1) * this.size || y > (this.height-1) * this.size) {
       return false;
     }
-    console.log("");
+    console.log(" ");
+    console.log(this.width + " " + this.height);
     console.log(Math.floor(x/20) + " " + Math.floor(y/20));
-    console.log(Math.floor((x + perso1.size) /20)+ " " + Math.floor(y/20));
     console.log(this.p[Math.floor(x/20)][Math.floor(y/20)]);
     if (this.p[Math.floor(x/20)][Math.floor(y/20)] == 1) {
       return false;
