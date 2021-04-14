@@ -50,15 +50,23 @@ class Map {
   }
   
   isCaseLibre(x, y) {
-    if (x < 0 && y < 0) {
+    if (x < 0 || y < 0 || x > height || y > width) {
       return false;
     }
-    console.log("Test " + this.p[1][1]);
-    console.log((x/20)+" "+(y/20));
-    if (this.p[x/20][y/20] != 1) {
-      return true;
+    console.log(Math.floor(x/20) + " " + Math.floor(y/20));
+    console.log(Math.floor((x + perso1.size) /20)+ " " + Math.floor(y/20));
+    if (this.p[Math.floor(x/20)][Math.floor(y/20)] == 1) {
+      return false;
+    } else if (this.p[Math.floor((x + perso1.size) /20)][Math.floor(y/20)] == 1) {
+      return false;
     }
-    return false;
+     else if (this.p[Math.floor(x /20)][Math.floor((y + perso1.size)/20)] == 1) {
+      return false;
+    }
+     else if (this.p[Math.floor((x + perso1.size) /20)][Math.floor((y + perso1.size)/20)] == 1) {
+      return false;
+    }
+    return true;
   }
   
   //dessiner la map
@@ -118,7 +126,7 @@ function doKeyDown(evt) {
 }
 
 // appel pour l'afficher
-var perso1 = new Personnage(0, 0, 5, 15);
+var perso1 = new Personnage(0, 0, 4, 15);
 var map1 = new Map(11, 11, 20);
 var modele = new Modele(map1, perso1);
 
