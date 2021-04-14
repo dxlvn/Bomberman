@@ -1,3 +1,4 @@
+/*
 $(document).keydown(function(e){
     switch (e.which){
     case 37:    // flèche gauche
@@ -22,3 +23,4 @@ $(document).keydown(function(e){
         break;
     }
 });
+*/

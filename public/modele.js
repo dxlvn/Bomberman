@@ -28,15 +28,19 @@ class Personnage {
 // representation de notre map Bomber's
 class Map {
   constructor(x, y, size_case) {
+    canvas.width = y * size_case;
+    canvas.height = x * size_case;
     this.height = x;
     this.width = y;
     this.p = [];
     for (let i = 0; i < this.height; i++) {
       this.p[i] = [];
       for (let j = 0; j < this.width; j++) {
-        let 
-        if
-        this.p[i][j] = this.i * 100 + this.j;
+        let content = 0;
+        if (i %2 == 1 && j%2 == 1) {
+            content = 1;
+        }
+        this.p[i][j] = content;
       }
     }
     this.size = size_case;
@@ -53,9 +57,13 @@ class Map {
       for (var j = 0; j < this.height; j++) {
         var x_case = j * this.size;
         var y_case = i * this.size;
+        if (this.p[i][j] == 1) {
+          context.fillStyle = "black";
+        } else {
+          context.fillStyle = "white";
+        }
         context.fillRect(x_case, y_case, this.size, this.size);
         context.strokeRect(x_case, y_case, this.size, this.size);
-        console.log(this.p[i][j]);
       }
     }
   }
@@ -78,28 +86,23 @@ class Modele {
 
 // appel pour l'afficher
 var perso1 = new Personnage(0, 0, 15);
-var map1 = new Map(10, 10, 20);
+var map1 = new Map(11, 11, 20);
 var modele = new Modele(map1, perso1);
 
 function doKeyDown(evt){
-    switch (evt.keyCode) {
-      case 38:  /* Up arrow was pressed */
-        perso1.move(0, -1);
-        modele.draw();
-    break;
-    case 40:  /* Down arrow was pressed */
-        perso1.move(0, 1);
-        modele.draw();
-    break;
-    case 37:  /* Left arrow was pressed */
-        perso1.move(-1, 0);
-        modele.draw();
-    break;
-    case 39:  /* Right arrow was pressed */
-        perso1.move(1, 0);
-        modele.draw();
-    break;
-    }
+  if (evt.keyCode == 32) {
+    perso1.move(0, -1);
+    modele.draw();
+  } else if (evt.keyCode == 38) {
+    perso1.move(0, 1);
+    modele.draw();
+  } else if (evt.keyCode == 40) {
+    perso1.move(-1, 0);
+    modele.draw();
+  } else if (evt.keyCode == 39) {
+    perso1.move(1, 0);
+    modele.draw();
+  }
 }
 
 window.addEventListener('keydown',doKeyDown,true);
