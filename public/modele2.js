@@ -16,12 +16,6 @@ class Modele {
   }
 }
 
-var rightPressed = false;
-var leftPressed = false;
-var upPressed = false;
-var downPressed = false;
-var spacePressed = false;
-
 function keyDownHandler(e) {
     if(e.key == "Right" || e.key == "ArrowRight") {
         rightPressed = true;
@@ -52,26 +46,7 @@ function keyUpHandler(e) {
     }
 }
 
-document.addEventListener("keydown", keyDownHandler, false);
-document.addEventListener("keyup", keyUpHandler, false);
-
-// appel pour l'affichage
-var perso1 = new Personnage(0, 0, 4, 15);
-var map1 = new Map(11, 15, 20);
-var modele = new Modele(map1, perso1);
-
-//window.addEventListener("keydown", doKeyDown, true);
-
-modele.draw();
-
-function test() {
-  console.log("Test");
-}
-
 function frame() {
-  console.log(leftPressed, upPressed, rightPressed, downPressed);
   perso1.move(leftPressed, upPressed, rightPressed, downPressed);
   modele.draw();
 }
-
-setInterval(test, 300);
