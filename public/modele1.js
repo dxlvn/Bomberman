@@ -130,6 +130,10 @@ function doKeyDown(evt) {
   } else if (evt.keyCode == 40) {
     perso1.move(0, perso1.dep);
     modele.draw();
+  } else if (evt.keyCode == 32) {
+    //perso1.move(0, perso1.dep);
+    //modele.draw();
+    window.alert("Bomb")
   }
 }
 
