@@ -28,5 +28,3 @@ function keyUpHandler(e) {
         SpacePressed = false;  
     }  */
 }
-
-export default {keyDownHandler, keyUpHandler};

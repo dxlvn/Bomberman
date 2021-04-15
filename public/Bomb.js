@@ -39,5 +39,3 @@ class Bomb {
     ctx.closePath();
   }
 }
-
-export default Bomb;
