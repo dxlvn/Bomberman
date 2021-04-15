@@ -17,12 +17,9 @@ var map1 = new Map(11, 15, 20);
 var modele = new Modele(map1, perso1);
 
 //window.addEventListener("keydown", doKeyDown, true);
+function frame() {
+  perso1.move(leftPressed, upPressed, rightPressed, downPressed);
+}
 
 modele.draw();
-
-
-var context2 = canvas.getContext("2d"); 
-var posx = 5;
-var posy = 0;
-context2.fillStyle = "#000000";
-context2.arc(posx, posy, 50, 0, 2 * Math.PI);
+setInterval(frame, 30);
