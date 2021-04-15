@@ -1,15 +1,12 @@
 //CLasse representant un joueur
 class Joueur {
-  constructor(x, y, dep, size) {
+  constructor(x, y, dep, size, m) {
     this.x = x;
     this.y = y;
     //Taille d'un deplacement (en pixel)
     this.dep = dep;
     //Taille du joueur (en pixel)
     this.size = size;
-  }
-  
-  addMap(m) {
     this.map = m;
   }
   
@@ -30,10 +27,10 @@ class Joueur {
   move(xDep, yDep) {
     console.log("Coord "+this.x + " " + this.y);
     console.log(xDep + " " + yDep);
-    console.log("Cible " +(xDep * this.dep) + " " +(xDep * this.dep));
-    if (this.map.isCaseLibre(this.x + (xDep * this.dep), this.y + (xDep * this.dep))) {
+    console.log("Cible " +(xDep * this.dep) + " " +(yDep * this.dep));
+    if (this.map.isCaseLibre(this, this.x + (xDep * this.dep), this.y + (yDep * this.dep))) {
       this.x += (xDep * this.dep);
-      this.y += (xDep * this.dep);
+      this.y += (yDep * this.dep);
     }
     console.log(this.x + " " + this.y);
   }

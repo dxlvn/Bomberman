@@ -23,5 +23,8 @@ function keyUpHandler(e) {
         upPressed = false;
     } else if(e.key == "Down" || e.key == "ArrowDown") {
         downPressed = false;
-    }
+    } /*
+      else if(e.key == "Space" || e.key == "ArrowSpace") {
+        SpacePressed = false;  
+    }  */
 }

@@ -34,7 +34,7 @@ class Bomb {
     explose (x-1,y) if isCaseLibre 
     explose (x,y+1) if isCaseLibre  
     explose (x,y-1) if isCaseLibre
-   
+    // rajouter les dégats sur la vie des persos quadnd on l'aura fait
    
    */ 
     ctx.clear();

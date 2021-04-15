@@ -1,6 +1,6 @@
 // representation de la map Bomber's
 class Map {
-  constructor(x, y, size_case, joueur) {
+  constructor(x, y, size_case, canvas) {
     canvas.width = x * size_case;
     canvas.height = y * size_case;
     this.height = y;
@@ -18,8 +18,8 @@ class Map {
     }
   }
   
-  isCaseLibre(x, y) {
-    if (x < 0 || y < 0 || (x + perso1.size)/this.size > this.width || (y + perso1.size)/this.size > this.height) {
+  isCaseLibre(j, x, y) {
+    if (x < 0 || y < 0 || (x + j.size)/this.size > this.width || (y + j.size)/this.size > this.height) {
       return false;
     }
     /*
@@ -33,13 +33,13 @@ class Map {
     if (this.p[Math.floor(x/this.size)][Math.floor(y/this.size)] == 1) {
       return false;
     //Teste le coin haut droite
-    } else if (this.p[Math.floor((x + perso1.size) /this.size)][Math.floor(y/this.size)] == 1) {
+    } else if (this.p[Math.floor((x + j.size) /this.size)][Math.floor(y/this.size)] == 1) {
       return false;
     //Teste le coin bas gauche
-    } else if (this.p[Math.floor(x /this.size)][Math.floor((y + perso1.size)/this.size)] == 1) {
+    } else if (this.p[Math.floor(x /this.size)][Math.floor((y + j.size)/this.size)] == 1) {
       return false;
     //Teste le coin bas droite
-    } else if (this.p[Math.floor((x + perso1.size) /this.size)][Math.floor((y + perso1.size)/this.size)] == 1) {
+    } else if (this.p[Math.floor((x + j.size) /this.size)][Math.floor((y + j.size)/this.size)] == 1) {
       return false;
     }
     return true;
