@@ -10,13 +10,24 @@
     <script type="text/javascript" src="joueur.js"></script>
     <script type="text/javascript" src="map.js"></script>
     <script type="text/javascript" src="modele2.js"></script>
+    <script type="text/javascript" src="controlleur.js"></script>
+    <script type="text/javascript" src="main.js"></script>
     <script type="text/javascript">
-      setInterval(frame, 300);
+      function frame() {
+        console.log("Tst");
+        perso1.move(leftPressed, upPressed, rightPressed, downPressed);
+        modele.draw();
+      }
+      function test() {
+        console.log("ok");
+      }
+      setInterval(test, 30);
     </script>
     <br />
     <p>
       <b>Bienvenu sur notre jeu </b> <br />
       <b> Bomber'S</b>
+      <a href="views/page2.html"> aaaaaa</a>
     </p>
   </body>
 </html>

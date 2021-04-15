@@ -5,8 +5,9 @@ class Bomb {
     this.t = t;
 }
   
-  createBomb(){
+  draw(){
     
   }
   
 }
+

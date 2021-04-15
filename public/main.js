@@ -20,4 +20,9 @@ var modele = new Modele(map1, perso1);
 
 modele.draw();
 
-setInterval(test, 300);
+
+var context2 = canvas.getContext("2d"); 
+var posx = 5;
+var posy = 0;
+context2.fillStyle = "#000000";
+context2.arc(posx, posy, 50, 0, 2 * Math.PI);
