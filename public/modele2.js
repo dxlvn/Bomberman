@@ -20,6 +20,7 @@ var rightPressed = false;
 var leftPressed = false;
 var upPressed = false;
 var downPressed = false;
+var spacePressed = false;
 
 function keyDownHandler(e) {
     if(e.key == "Right" || e.key == "ArrowRight") {
@@ -30,7 +31,13 @@ function keyDownHandler(e) {
         upPressed = true;
     } else if(e.key == "Down" || e.key == "ArrowDown") {
         downPressed = true;
+    } else if(e.key == "Space" || e.key == "Space") {
+      spacePressed == true;
     }
+      //else if (evt.keyCode == 32) {
+      //perso1.move(0, perso1.dep);
+      //modele.draw();
+      //alert("Bomb");
 }
 
 function keyUpHandler(e) {
@@ -58,7 +65,7 @@ var modele = new Modele(map1, perso1);
 modele.draw();
 
 function test() {
-  console.log("")
+  console.log("Test");
 }
 
 function frame() {
@@ -67,4 +74,4 @@ function frame() {
   modele.draw();
 }
 
-setInterval(frame, 30);
+setInterval(test, 300);

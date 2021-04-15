@@ -10,6 +10,7 @@ class Personnage {
   }
   
   move(left, up, right, down) {
+    console.log("ok");
     if (left) {
       this.move(-1, 0);
     } else if (right) {
