@@ -15,12 +15,12 @@ class Map {
     // get the context
     let context = canvas.getContext("2d");
 
-    // set fill and stroke styles
+    // definir les contours
     context.lineWidth = 2;
     context.fillStyle = "white";
     context.strokeStyle = "black";
 
-    // draw a rectangle with fill and stroke
+    // dessiner un carré avec un fond et un contour 
     for (var i = 0; i < this.height; i++) {
       for (var j = 0; j < this.height; j++) {
         var x_case = j * this.size;
