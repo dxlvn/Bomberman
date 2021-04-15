@@ -95,7 +95,7 @@ class Map {
   }
 }
 
-// representation de notre map Bomber's
+// representation de la map Bomber's
 class Modele {
   constructor(m, p) {
     this.map = m;
