@@ -1,5 +1,5 @@
 //CLasse representant un joueur
-class Personnage {
+class Joueur {
   constructor(x, y, dep, size) {
     this.x = x;
     this.y = y;
