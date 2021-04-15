@@ -15,12 +15,15 @@ document.addEventListener("keyup", keyUpHandler, false);
 var perso1 = new Joueur(0, 0, 4, 15);
 var map1 = new Map(11, 15, 20);
 var modele = new Modele(map1, perso1);
-//var bombe1 = new Bomb(7,0,5,10);
+var bombe1 = new Bomb(7, 0, 5, 10);
 
 //window.addEventListener("keydown", doKeyDown, true);
 function frame() {
   console.log(leftPressed, upPressed, rightPressed, downPressed);
-  perso1.move(leftPressed, upPressed, rightPressed, downPressed);
+  //perso1.move(leftPressed, upPressed, rightPressed, downPressed);
+  console.log(perso1.x+" " + perso1.y);
+  perso1.move(1,0);
+  /*
   if (leftPressed) {
     perso1.move(-1, 0);
   } else if (rightPressed) {
@@ -29,7 +32,7 @@ function frame() {
     perso1.move(0, -1);
   } else if (downPressed) {
     perso1.move(0, 1);
-  }
+  }*/
 }
 
 modele.draw();
