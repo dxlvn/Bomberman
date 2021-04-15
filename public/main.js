@@ -33,6 +33,7 @@ function frame() {
   } else if (downPressed) {
     perso1.move(0, 1);
   }*/
+  modele.draw();
 }
 
 modele.draw();

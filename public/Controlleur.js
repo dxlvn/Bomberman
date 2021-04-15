@@ -1,3 +1,4 @@
+//Detecte l'appui sur des touches et l'enregistre
 function keyDownHandler(e) {
     if(e.key == "Right" || e.key == "ArrowRight") {
         rightPressed = true;
@@ -10,12 +11,9 @@ function keyDownHandler(e) {
     } else if(e.key == "Space" || e.key == "Space") {
       spacePressed == true;
     }
-      //else if (evt.keyCode == 32) {
-      //perso1.move(0, perso1.dep);
-      //modele.draw();
-      //alert("Bomb");
 }
 
+//Detecte l'arret d'appui et l'enregistre
 function keyUpHandler(e) {
     if(e.key == "Right" || e.key == "ArrowRight") {
         rightPressed = false;

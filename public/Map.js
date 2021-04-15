@@ -1,6 +1,6 @@
 // representation de la map Bomber's
 class Map {
-  constructor(x, y, size_case) {
+  constructor(x, y, size_case, joueur) {
     canvas.width = x * size_case;
     canvas.height = y * size_case;
     this.height = y;

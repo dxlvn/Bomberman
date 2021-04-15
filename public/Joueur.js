@@ -9,6 +9,10 @@ class Joueur {
     this.size = size;
   }
   
+  addMap(m) {
+    this.map = m;
+  }
+  
   move(left, up, right, down) {
     console.log("ok");
     if (left) {
@@ -24,10 +28,14 @@ class Joueur {
 
   //Deplace le joueur dans le x et y indiqué
   move(xDep, yDep) {
-    if (map1.isCaseLibre(this.x + (xDep * this.dep), this.y + (xDep * this.dep))) {
+    console.log("Coord "+this.x + " " + this.y);
+    console.log(xDep + " " + yDep);
+    console.log("Cible " +(xDep * this.dep) + " " +(xDep * this.dep));
+    if (this.map.isCaseLibre(this.x + (xDep * this.dep), this.y + (xDep * this.dep))) {
       this.x += (xDep * this.dep);
       this.y += (xDep * this.dep);
     }
+    console.log(this.x + " " + this.y);
   }
 
   draw() {
