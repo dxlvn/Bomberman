@@ -2,14 +2,18 @@ const canvas = document.getElementById("map");
 // get the context
 var context = canvas.getContext("2d");
 
+//CLasse representant un joueur
 class Personnage {
   constructor(x, y, dep, size) {
     this.x = x;
     this.y = y;
+    //Taille d'un deplacement (en pixel)
     this.dep = dep;
+    //Taille du joueur (en pixel)
     this.size = size;
   }
 
+  //Deplace le joueur dans le x et y indiqué
   move(xDep, yDep) {
     if (map1.isCaseLibre(this.x + xDep, this.y + yDep)) {
       this.x += xDep;
@@ -35,6 +39,7 @@ class Map {
     canvas.height = y * size_case;
     this.height = y;
     this.width = x;
+    this.size = size_case;
     this.p = [];
     for (let i = 0; i < this.width; i++) {
       this.p[i] = [];
@@ -45,27 +50,28 @@ class Map {
         }
       }
     }
-    this.size = size_case;
   }
   
   isCaseLibre(x, y) {
-    if (x < 0 || y < 0 || (x + perso1.size)/20 > this.width || (y + perso1.size)/20 > this.height) {
+    if (x < 0 || y < 0 || (x + perso1.size)/this.size > this.width || (y + perso1.size)/this.size > this.height) {
       return false;
     }
     console.log(" ");
     console.log(this.width + " " + this.height);
-    console.log(Math.floor(x/20) + " " + Math.floor(y/20));
-    console.log(this.p[Math.floor(x/20)].length);
-    console.log(this.p[Math.floor(x/20)][Math.floor(y/20)]);
-    if (this.p[Math.floor(x/20)][Math.floor(y/20)] == 1) {
+    console.log(Math.floor(x/this.size) + " " + Math.floor(y/this.size));
+    console.log(this.p[Math.floor(x/this.size)].length);
+    console.log(this.p[Math.floor(x/this.size)][Math.floor(y/this.size)]);
+    //Teste le coin haut gauche
+    if (this.p[Math.floor(x/this.size)][Math.floor(y/this.size)] == 1) {
       return false;
-    } else if (this.p[Math.floor((x + perso1.size) /20)][Math.floor(y/20)] == 1) {
+    //Teste le coin haut droite
+    } else if (this.p[Math.floor((x + perso1.size) /this.size)][Math.floor(y/this.size)] == 1) {
+      return false;
+    //
+    } else if (this.p[Math.floor(x /this.size)][Math.floor((y + perso1.size)/this.size)] == 1) {
       return false;
     }
-     else if (this.p[Math.floor(x /20)][Math.floor((y + perso1.size)/20)] == 1) {
-      return false;
-    }
-     else if (this.p[Math.floor((x + perso1.size) /20)][Math.floor((y + perso1.size)/20)] == 1) {
+     else if (this.p[Math.floor((x + perso1.size) /this.size)][Math.floor((y + perso1.size)/this.size)] == 1) {
       return false;
     }
     return true;
