@@ -35,8 +35,9 @@ class Bomb {
     // rajouter les dégats sur la vie des persos quand on l'aura fait
    
    */
-  
     ctx.clear();
     ctx.closePath();
   }
 }
+
+export default Bomb;

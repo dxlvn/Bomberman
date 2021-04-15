@@ -11,3 +11,6 @@ class Modele {
     this.perso.draw();
   }
 }
+
+
+export default Modele;
