@@ -12,12 +12,24 @@ class Personnage {
     //Taille du joueur (en pixel)
     this.size = size;
   }
+  
+  move(left, up, right, down) {
+    if (left) {
+      this.move(-1, 0);
+    } else if (right) {
+      this.move(1, 0);
+    } else if (up) {
+      this.move(0, -1);
+    } else if (down) {
+      this.move(0, 1);
+    }
+  }
 
   //Deplace le joueur dans le x et y indiqué
   move(xDep, yDep) {
-    if (map1.isCaseLibre(this.x + xDep, this.y + yDep)) {
-      this.x += xDep;
-      this.y += yDep;
+    if (map1.isCaseLibre(this.x + (xDep * this.dep), this.y + (xDep * this.dep))) {
+      this.x += (xDep * this.dep);
+      this.y += (xDep * this.dep);
     }
   }
 
@@ -67,11 +79,11 @@ class Map {
     //Teste le coin haut droite
     } else if (this.p[Math.floor((x + perso1.size) /this.size)][Math.floor(y/this.size)] == 1) {
       return false;
-    //
+    //Teste le coin bas gauche
     } else if (this.p[Math.floor(x /this.size)][Math.floor((y + perso1.size)/this.size)] == 1) {
       return false;
-    }
-     else if (this.p[Math.floor((x + perso1.size) /this.size)][Math.floor((y + perso1.size)/this.size)] == 1) {
+    //Teste le coin bas droite
+    } else if (this.p[Math.floor((x + perso1.size) /this.size)][Math.floor((y + perso1.size)/this.size)] == 1) {
       return false;
     }
     return true;
@@ -115,7 +127,7 @@ class Modele {
   }
 }
 
-
+/*
 // elle traite le event qu'elle reçoit et selon le code de la touche 
 function doKeyDown(evt) {
   if (evt.keyCode == 37) {
@@ -131,13 +143,49 @@ function doKeyDown(evt) {
     perso1.move(0, perso1.dep);
     modele.draw();
   }
+}*/
+
+var rightPressed = false;
+var leftPressed = false;
+var upPressed = false;
+var downPressed = false;
+
+function keyDownHandler(e) {
+    if(e.key == "Right" || e.key == "ArrowRight") {
+        rightPressed = true;
+    } else if(e.key == "Left" || e.key == "ArrowLeft") {
+        leftPressed = true;
+    } else if(e.key == "Up" || e.key == "ArrowUp") {
+        upPressed = true;
+    } else if(e.key == "Down" || e.key == "ArrowDown") {
+        downPressed = true;
+    }
 }
+
+function keyUpHandler(e) {
+    if(e.key == "Right" || e.key == "ArrowRight") {
+        rightPressed = false;
+    } else if(e.key == "Left" || e.key == "ArrowLeft") {
+        leftPressed = false;
+    } else if(e.key == "Up" || e.key == "ArrowUp") {
+        upPressed = false;
+    } else if(e.key == "Down" || e.key == "ArrowDown") {
+        leftPressed = false;
+    }
+}
+
+document.addEventListener("keydown", keyDownHandler, false);
+document.addEventListener("keyup", keyUpHandler, false);
 
 // appel pour l'affichage
 var perso1 = new Personnage(0, 0, 4, 15);
 var map1 = new Map(11, 15, 20);
 var modele = new Modele(map1, perso1);
 
-window.addEventListener("keydown", doKeyDown, true);
+//window.addEventListener("keydown", doKeyDown, true);
 
 modele.draw();
+
+function frame() {
+  
+}
