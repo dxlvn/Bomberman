@@ -12,8 +12,6 @@ class Personnage {
     //Taille du joueur (en pixel)
     this.size = size;
   }
-  
-
 
   //Deplace le joueur dans le x et y indiqué
   move(xDep, yDep) {
@@ -53,40 +51,57 @@ class Map {
       }
     }
   }
-  
+
   isCaseLibre(x, y) {
-    if (x < 0 || y < 0 || (x + perso1.size)/this.size > this.width || (y + perso1.size)/this.size > this.height) {
+    if (
+      x < 0 ||
+      y < 0 ||
+      (x + perso1.size) / this.size > this.width ||
+      (y + perso1.size) / this.size > this.height
+    ) {
       return false;
     }
     console.log(" ");
     console.log(this.width + " " + this.height);
-    console.log(Math.floor(x/this.size) + " " + Math.floor(y/this.size));
-    console.log(this.p[Math.floor(x/this.size)].length);
-    console.log(this.p[Math.floor(x/this.size)][Math.floor(y/this.size)]);
+    console.log(Math.floor(x / this.size) + " " + Math.floor(y / this.size));
+    console.log(this.p[Math.floor(x / this.size)].length);
+    console.log(this.p[Math.floor(x / this.size)][Math.floor(y / this.size)]);
     //Teste le coin haut gauche
-    if (this.p[Math.floor(x/this.size)][Math.floor(y/this.size)] == 1) {
+    if (this.p[Math.floor(x / this.size)][Math.floor(y / this.size)] == 1) {
       return false;
-    //Teste le coin haut droite
-    } else if (this.p[Math.floor((x + perso1.size) /this.size)][Math.floor(y/this.size)] == 1) {
+      //Teste le coin haut droite
+    } else if (
+      this.p[Math.floor((x + perso1.size) / this.size)][
+        Math.floor(y / this.size)
+      ] == 1
+    ) {
       return false;
-    //Teste le coin bas gauche
-    } else if (this.p[Math.floor(x /this.size)][Math.floor((y + perso1.size)/this.size)] == 1) {
+      //Teste le coin bas gauche
+    } else if (
+      this.p[Math.floor(x / this.size)][
+        Math.floor((y + perso1.size) / this.size)
+      ] == 1
+    ) {
       return false;
-    //Teste le coin bas droite
-    } else if (this.p[Math.floor((x + perso1.size) /this.size)][Math.floor((y + perso1.size)/this.size)] == 1) {
+      //Teste le coin bas droite
+    } else if (
+      this.p[Math.floor((x + perso1.size) / this.size)][
+        Math.floor((y + perso1.size) / this.size)
+      ] == 1
+    ) {
       return false;
     }
     return true;
   }
-  
+
   //dessiner la map
   draw() {
-    // initialisation des variables 
+    // initialisation des variables
     context.lineWidth = 2;
     context.fillStyle = "white";
     context.strokeStyle = "black";
 
-    // Création des cases ensuite elle les remplit 
+    // Création des cases ensuite elle les remplit
     for (var i = 0; i < this.width; i++) {
       for (var j = 0; j < this.height; j++) {
         var x_case = i * this.size;
@@ -117,8 +132,7 @@ class Modele {
   }
 }
 
-
-// elle traite le event qu'elle reçoit et selon le code de la touche 
+// elle traite le event qu'elle reçoit et selon le code de la touche
 function doKeyDown(evt) {
   if (evt.keyCode == 37) {
     perso1.move(-perso1.dep, 0);
@@ -132,12 +146,8 @@ function doKeyDown(evt) {
   } else if (evt.keyCode == 40) {
     perso1.move(0, perso1.dep);
     modele.draw();
-
   }
 }
-
-
-
 
 // appel pour l'affichage
 var perso1 = new Personnage(0, 0, 4, 15);

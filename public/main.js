@@ -1,8 +1,10 @@
+/*
 import Map from "Map.js";
 import Joueur from "Joueur.js";
 import Modele from "Modele2.js";
 import Bomb from "Bomb.js";
-import "Controlleur.js";
+import { keyDownHandler, keyUpHandler } from "Controlleur.js";
+*/
 
 const canvas = document.getElementById("map");
 // get the context
@@ -26,9 +28,11 @@ var bombe1 = new Bomb(7, 0, 5, 10);
 //window.addEventListener("keydown", doKeyDown, true);
 function frame() {
   console.log(leftPressed, upPressed, rightPressed, downPressed);
+  if (leftPressed) {
+    perso1.move(1,0);
+  }
   perso1.move(leftPressed, upPressed, rightPressed, downPressed);
-  console.log(perso1.x+" " + perso1.y);
-  //perso1.move(1,0);
+  perso1.move(1,0);
   /*
   if (leftPressed) {
     perso1.move(-1, 0);

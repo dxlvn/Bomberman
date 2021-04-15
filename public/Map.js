@@ -17,9 +17,14 @@ class Map {
       }
     }
   }
-  
+
   isCaseLibre(j, x, y) {
-    if (x < 0 || y < 0 || (x + j.size)/this.size > this.width || (y + j.size)/this.size > this.height) {
+    if (
+      x < 0 ||
+      y < 0 ||
+      (x + j.size) / this.size > this.width ||
+      (y + j.size) / this.size > this.height
+    ) {
       return false;
     }
     /*
@@ -30,29 +35,39 @@ class Map {
     console.log(this.p[Math.floor(x/this.size)][Math.floor(y/this.size)]);
     */
     //Teste le coin haut gauche
-    if (this.p[Math.floor(x/this.size)][Math.floor(y/this.size)] == 1) {
+    if (this.p[Math.floor(x / this.size)][Math.floor(y / this.size)] == 1) {
       return false;
-    //Teste le coin haut droite
-    } else if (this.p[Math.floor((x + j.size) /this.size)][Math.floor(y/this.size)] == 1) {
+      //Teste le coin haut droite
+    } else if (
+      this.p[Math.floor((x + j.size) / this.size)][Math.floor(y / this.size)] ==
+      1
+    ) {
       return false;
-    //Teste le coin bas gauche
-    } else if (this.p[Math.floor(x /this.size)][Math.floor((y + j.size)/this.size)] == 1) {
+      //Teste le coin bas gauche
+    } else if (
+      this.p[Math.floor(x / this.size)][Math.floor((y + j.size) / this.size)] ==
+      1
+    ) {
       return false;
-    //Teste le coin bas droite
-    } else if (this.p[Math.floor((x + j.size) /this.size)][Math.floor((y + j.size)/this.size)] == 1) {
+      //Teste le coin bas droite
+    } else if (
+      this.p[Math.floor((x + j.size) / this.size)][
+        Math.floor((y + j.size) / this.size)
+      ] == 1
+    ) {
       return false;
     }
     return true;
   }
-  
+
   //dessiner la map
   draw() {
-    // initialisation des variables 
+    // initialisation des variables
     context.lineWidth = 2;
     context.fillStyle = "white";
     context.strokeStyle = "black";
 
-    // Création des cases ensuite elle les remplit 
+    // Création des cases ensuite elle les remplit
     for (var i = 0; i < this.width; i++) {
       for (var j = 0; j < this.height; j++) {
         var x_case = i * this.size;
