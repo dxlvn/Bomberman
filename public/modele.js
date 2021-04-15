@@ -73,12 +73,12 @@ class Map {
   
   //dessiner la map
   draw() {
-    // set fill and stroke styles
+    // initialisation des variables 
     context.lineWidth = 2;
     context.fillStyle = "white";
     context.strokeStyle = "black";
 
-    // draw a rectangle with fill and stroke
+    // Création des cases ensuite elle les remplit 
     for (var i = 0; i < this.width; i++) {
       for (var j = 0; j < this.height; j++) {
         var x_case = i * this.size;
@@ -102,7 +102,7 @@ class Modele {
     this.perso = p;
   }
 
-  //dessiner la map
+  //dessiner la map et le joueur
   draw() {
     this.map.draw();
     this.perso.draw();
@@ -110,7 +110,7 @@ class Modele {
 }
 
 
-
+// elle traite le event qu'elle reçoit et selon le code de la touche 
 function doKeyDown(evt) {
   if (evt.keyCode == 37) {
     perso1.move(-perso1.dep, 0);
@@ -127,7 +127,7 @@ function doKeyDown(evt) {
   }
 }
 
-// appel pour l'afficher
+// appel pour l'affichage
 var perso1 = new Personnage(0, 0, 4, 15);
 var map1 = new Map(11, 15, 20);
 var modele = new Modele(map1, perso1);
