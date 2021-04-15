@@ -1,8 +1,9 @@
 /* this file is loaded by index.html and styles the page */
+/*  
 
 * {
   box-sizing: border-box;
-}
+} */
 
 body {
   font-family: sans-serif;
@@ -16,11 +17,11 @@ body {
 
 
 /* Permet d'afficher une grille */
-canvas {
+/*canvas {
   margin: auto;
   display: block;
   height: 100%;
-}
+}*/
 
 /*
 h1 {
