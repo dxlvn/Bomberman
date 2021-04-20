@@ -19,36 +19,13 @@ class Map {
   }
 
   isCaseLibre(j, x, y) {
-    if (
-      x < 0 ||
-      y < 0 ||
-      (x + j.size) / this.size > this.width ||
-      (y + j.size) / this.size > this.height
-    ) {
+    if ( x < 0 || y < 0 ||
+      x / this.size > this.width ||
+      y / this.size > this.height ) {
       return false;
     }
     
-    //Teste le coin haut gauche
     if (this.p[Math.floor(x / this.size)][Math.floor(y / this.size)] == 1) {
-      return false;
-      //Teste le coin haut droite
-    } else if (
-      this.p[Math.floor((x + j.size) / this.size)][Math.floor(y / this.size)] ==
-      1
-    ) {
-      return false;
-      //Teste le coin bas gauche
-    } else if (
-      this.p[Math.floor(x / this.size)][Math.floor((y + j.size) / this.size)] ==
-      1
-    ) {
-      return false;
-      //Teste le coin bas droite
-    } else if (
-      this.p[Math.floor((x + j.size) / this.size)][
-        Math.floor((y + j.size) / this.size)
-      ] == 1
-    ) {
       return false;
     }
     return true;

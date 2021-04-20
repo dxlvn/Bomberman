@@ -29,11 +29,14 @@ class Joueur {
     console.log(xDep + " " + yDep);
     console.log("Cible " + xDep * this.dep + " " + yDep * this.dep);
     if (
-      this.map.isCaseLibre(
-        this,
-        this.x + xDep * this.dep,
-        this.y + yDep * this.dep
-      )
+      //Teste le coin haut gauche
+      this.map.isCaseLibre(this, this.x + xDep * this.dep, this.y + yDep * this.dep) &&
+      //Teste le coin haut doite
+      this.map.isCaseLibre(this, this.x + xDep * this.dep + this.size, this.y + yDep * this.dep) &&
+      //Teste le coin bas gauche
+      this.map.isCaseLibre(this, this.x + xDep * this.dep, this.y + yDep * this.dep + this.size) &&
+      //Teste le coin bas droite
+      this.map.isCaseLibre(this, this.x + xDep * this.dep + this.size, this.y + yDep * this.dep + this.size)
     ) {
       this.x += xDep * this.dep;
       this.y += yDep * this.dep;
