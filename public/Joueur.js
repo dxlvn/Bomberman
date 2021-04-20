@@ -11,7 +11,7 @@ class Joueur {
   }
 
   makeMove(keys) {
-    console.log("Keys : " + keys);
+    //Regarde la derniere touche enfoncée
     if (keys[keys.length - 1] == "ArrowLeft") {
       this.move(-1, 0);
     } else if (keys[keys.length - 1] == "ArrowRight") {
@@ -25,9 +25,7 @@ class Joueur {
 
   //Deplace le joueur dans le x et y indiqué
   move(xDep, yDep) {
-    console.log("Coord " + this.x + " " + this.y);
-    console.log(xDep + " " + yDep);
-    console.log("Cible " + xDep * this.dep + " " + yDep * this.dep);
+    //Test de collision
     if (
       //Teste le coin haut gauche
       this.map.isCaseLibre(this, this.x + xDep * this.dep, this.y + yDep * this.dep) &&
@@ -41,7 +39,6 @@ class Joueur {
       this.x += xDep * this.dep;
       this.y += yDep * this.dep;
     }
-    console.log(this.x + " " + this.y);
   }
 
   draw() {

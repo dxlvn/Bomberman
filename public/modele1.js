@@ -61,11 +61,6 @@ class Map {
     ) {
       return false;
     }
-    console.log(" ");
-    console.log(this.width + " " + this.height);
-    console.log(Math.floor(x / this.size) + " " + Math.floor(y / this.size));
-    console.log(this.p[Math.floor(x / this.size)].length);
-    console.log(this.p[Math.floor(x / this.size)][Math.floor(y / this.size)]);
     //Teste le coin haut gauche
     if (this.p[Math.floor(x / this.size)][Math.floor(y / this.size)] == 1) {
       return false;
