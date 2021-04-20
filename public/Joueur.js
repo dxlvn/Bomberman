@@ -11,14 +11,14 @@ class Joueur {
   }
 
   makeMove(keys) {
-    console.log("ok");
-    if (keys[keys.length - 1] == "left") {
+    console.log("Keys : " + keys);
+    if (keys[keys.length - 1] == "ArrowLeft") {
       this.move(-1, 0);
-    } else if (keys[keys.length - 1] == "right) {
+    } else if (keys[keys.length - 1] == "ArrowRight") {
       this.move(1, 0);
-    } else if (keys[keys.length - 1] == "up) {
+    } else if (keys[keys.length - 1] == "ArrowUp") {
       this.move(0, -1);
-    } else if (keys[keys.length - 1] == "down) {
+    } else if (keys[keys.length - 1] == "ArrowDown") {
       this.move(0, 1);
     }
   }

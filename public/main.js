@@ -15,7 +15,7 @@ var leftPressed = false;
 var upPressed = false;
 var downPressed = false;
 var spacePressed = false;
-var lastKeyPressed = [];
+var keys = [];
 
 document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
@@ -28,7 +28,7 @@ var modele = new Modele(map1, perso1);
 
 //window.addEventListener("keydown", doKeyDown, true);
 function frame() {
-  perso1.makeMove(lastKeyPressed);
+  perso1.makeMove(keys);
   if (leftPressed) {
     perso1.move(-1,0);
   } else if (upPressed) {
