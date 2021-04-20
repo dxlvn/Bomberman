@@ -11,7 +11,7 @@ class Joueur {
   }
 
   makeMove(keys) {
-    //Regarde la derniere touche enfoncée
+    //Regarde les deux dernieres touches enfoncées
     let moveDep = [[0,0],[0,0]]
     let nbKeys =(keys.length > 1) ? 2 : 1;
     for (let i = 0; i < nbKeys; i++) {
@@ -25,8 +25,12 @@ class Joueur {
         moveDep[i][1] = 1;
       }
     }
+    //On fait le délacement de la derniere touche
     this.move(moveDep[0][0], moveDep[0][1]);
-    if(Math.abs(moveDep[0][0])) {
+    //Et si celui de l'avant deniere n'est pas contradictoire
+    if(Math.abs(moveDep[0][0])!= Math.abs(moveDep[1][0]) &&
+      Math.abs(moveDep[0][1])!= Math.abs(moveDep[1][1])) {
+      //On fait aussi le deplecement de l'avant derniere (diagonale)
       this.move(moveDep[1][0], moveDep[1][1]);
     }
   }
