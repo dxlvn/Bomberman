@@ -12,14 +12,22 @@ class Joueur {
 
   makeMove(keys) {
     //Regarde la derniere touche enfoncée
-    if (keys[keys.length - 1] == "ArrowLeft") {
-      this.move(-1, 0);
-    } else if (keys[keys.length - 1] == "ArrowRight") {
-      this.move(1, 0);
-    } else if (keys[keys.length - 1] == "ArrowUp") {
-      this.move(0, -1);
-    } else if (keys[keys.length - 1] == "ArrowDown") {
-      this.move(0, 1);
+    let moveDep = [[0,0],[0,0]]
+    let nbKeys =(keys.length > 1) ? 2 : 1;
+    for (let i = 0; i < nbKeys; i++) {
+      if (keys[keys.length - i - 1] == "ArrowLeft") {
+        moveDep[i][0] = -1;
+      } else if (keys[keys.length - i - 1] == "ArrowRight") {
+        moveDep[i][0] = 1;
+      } else if (keys[keys.length - i - 1] == "ArrowUp") {
+        moveDep[i][1] = -1;
+      } else if (keys[keys.length - i - 1] == "ArrowDown") {
+        moveDep[i][1] = 1;
+      }
+    }
+    this.move(moveDep[0][0], moveDep[0][1]);
+    if(Math.abs(moveDep[0][0])) {
+      this.move(moveDep[1][0], moveDep[1][1]);
     }
   }
 
