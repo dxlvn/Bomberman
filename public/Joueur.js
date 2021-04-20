@@ -10,15 +10,15 @@ class Joueur {
     this.map = m;
   }
 
-  move(left, up, right, down) {
+  makeMove(keys) {
     console.log("ok");
-    if (left) {
+    if (keys[keys.length - 1] == "left") {
       this.move(-1, 0);
-    } else if (right) {
+    } else if (keys[keys.length - 1] == "right) {
       this.move(1, 0);
-    } else if (up) {
+    } else if (keys[keys.length - 1] == "up) {
       this.move(0, -1);
-    } else if (down) {
+    } else if (keys[keys.length - 1] == "down) {
       this.move(0, 1);
     }
   }
