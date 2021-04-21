@@ -1,8 +1,4 @@
 class Bomb {
-  
-  
-  
-  var audio = new Audio('son.mp3');
 
   
   constructor(x, y, t, m) {
@@ -10,6 +6,8 @@ class Bomb {
     this.y = y;
     this.t = t;
     this.map = m;
+    this.audioExplosion = new Audio('https://cdn.glitch.com/78539be0-7261-4593-9d5a-b8d0ccd26f37%2FaudioExplosion.mp3?v=1619023276071');
+    
   }
 
   draw() {
@@ -40,7 +38,7 @@ class Bomb {
     
     
     
-    audio.play();
+    this.audioExplosion.play();
     
     
     
