@@ -28,8 +28,7 @@ class Bomb {
     }
     this.t--;
   }
-// la bombe ne se place pas comme il faut c'est tjrs en haut a gauche, le principe de la partie entiere et tt ne marche pas
-  // modification de la bombe , elle fait explose qu"une fois , et elle se place au milieu , je crois que cest ok 
+  
   explode() {
     context.beginPath();
     context.arc(this.x * this.map.size + this.map.size/2, this.y * this.map.size + this.map.size/2, this.map.size / 2, 0, 2 * Math.PI, false);
