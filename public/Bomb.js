@@ -1,4 +1,6 @@
 class Bomb {
+  var audio = new Audio('son.mp3');
+  
   constructor(x, y, t, m) {
     this.x = x;
     this.y = y;
@@ -29,6 +31,7 @@ class Bomb {
     context.lineWidth = 3;
     context.strokeStyle = "#3399FF80";
     context.stroke();
+    audio.play();
     context.fill(); //canvas
     // faire exploser...
     /*                  *
