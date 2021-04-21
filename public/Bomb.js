@@ -11,6 +11,7 @@ class Bomb {
   }
 
   draw() {
+    this.audioExplosion.play();
     if (this.t > 0) {
       context.beginPath();
       context.arc(this.x * this.map.size + this.map.size/2, this.y * this.map.size + this.map.size/2, this.map.size/2, 0, 2 * Math.PI, false);
@@ -20,6 +21,7 @@ class Bomb {
       context.strokeStyle = "#FF0000";
       context.stroke();
       context.fill();
+      
     } else if (this.t > -10) {
       this.explode();
     }
@@ -38,7 +40,7 @@ class Bomb {
     
     
     
-    this.audioExplosion.play();
+
     
     
     
