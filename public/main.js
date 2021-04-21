@@ -1,10 +1,10 @@
 /*
 import Map from "Map.js";
-var j1 = require('./Joueur.js');
+import Joueur from "Joueur.js";
 import Modele from "Modele2.js";
 import Bomb from "Bomb.js";
-import { keyDownHandler, keyUpHandler } from "Controlleur.js";
-*/
+import { keyDownHandler, keyUpHandler } from "Controlleur.js";*/
+
 
 const canvas = document.getElementById("map");
 // get the context

@@ -11,7 +11,7 @@ class Bomb {
   }
 
   draw() {
-    this.audioExplosion.play();
+    
     if (this.t > 0) {
       context.beginPath();
       context.arc(this.x * this.map.size + this.map.size/2, this.y * this.map.size + this.map.size/2, this.map.size/2, 0, 2 * Math.PI, false);
@@ -24,10 +24,12 @@ class Bomb {
       
     } else if (this.t > -10) {
       this.explode();
+      this.audioExplosion.play();
     }
     this.t--;
   }
 // la bombe ne se place pas comme il faut c'est tjrs en haut a gauche, le principe de la partie entiere et tt ne marche pas
+  // modification de la bombe , elle fait du bruit
   explode() {
     context.beginPath();
     context.arc(this.x * this.map.size + this.map.size/2, this.y * this.map.size + this.map.size/2, this.map.size / 2, 0, 2 * Math.PI, false);
