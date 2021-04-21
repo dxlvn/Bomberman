@@ -1,27 +1,32 @@
 class Bomb {
-  constructor(x, y, r, t) {
+  constructor(x, y, r, t, m) {
     this.x = x;
     this.y = y;
     this.t = t;
+    this.map = m;
   }
 
   draw() {
-    var canvas = document.getElementById("circle");
-    if (canvas.getContext) {
-      var ctx = canvas.getContext("2d");
-      var X = 7; // this.x
-      var Y = 0; // this.y
-      var R = 5; // this.r
-      ctx.beginPath();
-      ctx.arc(X, Y, R, 0, 2 * Math.PI, false);
-      ctx.lineWidth = 3;
-      ctx.strokeStyle = "#FF0000";
-      ctx.stroke();
-      ctx.fill(); //canvas
+    if (t)
+    context.beginPath();
+    context.arc(this.x * this.map.size, this.y * this.map.size, this.map.size, 0, 2 * Math.PI, false);
+    context.lineWidth = 3;
+    context.strokeStyle = "#FF0000";
+    context.stroke();
+    context.fill(); //canvas
+    this.t --;
+    if (this.t == 0) {
+      this.explode();
     }
   }
 
-  disappear(ctx) {
+  disappear() {
+    context.beginPath();
+    context.arc(this.x * this.map.size, this.y * this.map.size, this.map.size, 0, 2 * Math.PI, false);
+    context.lineWidth = 3;
+    context.strokeStyle = "#FF0000";
+    context.stroke();
+    context.fill(); //canvas
     // faire exploser...
     /*                  *
     Faire exploser    * * *  (x,y) centre
@@ -34,8 +39,8 @@ class Bomb {
     explose (x,y-1) if isCaseLibre
     // rajouter les dégats sur la vie des persos quand on l'aura fait
    
-   */
-    ctx.clear();
-    ctx.closePath();
+    context.clear();
+    context.closePath();
+    */
   }
 }
