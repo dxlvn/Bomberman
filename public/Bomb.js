@@ -6,7 +6,7 @@ class Bomb {
     this.y = y;
     this.t = t;
     this.map = m;
-    this.audioExplosion = new Audio('https://cdn.glitch.com/78539be0-7261-4593-9d5a-b8d0ccd26f37%2FaudioExplosion.mp3?v=1619026394985');
+    this.audioExplosion = new Audio('https://cdn.glitch.com/78539be0-7261-4593-9d5a-b8d0ccd26f37%2FaudioExplosion%20(mp3cut.net).mp3?v=1619046058517');
     
   }
 
