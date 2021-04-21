@@ -6,8 +6,7 @@ function keyDownHandler(e) {
     keys.push(e.key);
   }
   if (e.keyCode == 32) {
-    console.log("Space pressed");
-    spacePressed == true;
+    spacePressed = true;
   }
 }
 
@@ -18,6 +17,7 @@ function keyUpHandler(e) {
     keys.splice(keys.indexOf(e.key), 1);
   }
   if (e.keyCode == 32) {
-    SpacePressed = false;
+    console.log("Space released");
+    spacePressed = false;
   }
 }

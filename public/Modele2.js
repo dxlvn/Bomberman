@@ -11,15 +11,18 @@ class Modele {
     
     this.map.draw();
     this.perso.draw();
-    for (let i = this.bombs.length - 1; i >= 0 ; i++) {
-      if (this.bombs[i].t > -100) {
-        this.bombs[i].draw();
-      } else {
-        this.bombs.splice(i, 1);
+    console.log(this.bombs.length);
+    if (this.bombs.length > 0) {
+      for (let i = this.bombs.length - 1; i >= 0 ; i++) {
+        if (this.bombs[i].t > -100) {
+          this.bombs[i].draw();
+        } else {
+          this.bombs.splice(i, 1);
+        }
       }
-    }
-    for (let i = 0; i < this.bombs.length; i++) {
-      this.bombs[i].draw();
+      for (let i = 0; i < this.bombs.length; i++) {
+        this.bombs[i].draw();
+      }
     }
     /*
     var bombe1 = new Bomb(40, 42, 80, 10);

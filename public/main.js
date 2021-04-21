@@ -26,13 +26,11 @@ var modele = new Modele(map1, perso1, bombs);
 //window.addEventListener("keydown", doKeyDown, true);
 function frame() {
   perso1.makeMove(keys);
-  console.log(spacePressed);
   if (spacePressed) {
+    console.log("Bombe posée");
     bombs.push(new Bomb(perso1.x, perso1.y, 100, map1));
   }
   modele.draw();
 }
 
-modele.draw();
-
-setInterval(frame, 30);
+setInterval(frame, 300);
