@@ -14,16 +14,15 @@ class Bomb {
       context.strokeStyle = "#FF0000";
       context.stroke();
       context.fill(); //canvas
-    }
-    if (this.t > -10) {
+    } else if (this.t > -10) {
       this.explode();
     }
-    this.t --;
+    this.t--;
   }
 
   explode() {
     context.beginPath();
-    context.arc(this.x * this.map.size + this.map.size/2, this.y * this.map.sizethis.map.size, this.map.size / 2, 0, 2 * Math.PI, false);
+    context.arc(this.x * this.map.size + this.map.size/2, this.y * this.map.size + this.map.size/2, this.map.size / 2, 0, 2 * Math.PI, false);
     context.lineWidth = 3;
     context.strokeStyle = "#3399FF80";
     context.stroke();

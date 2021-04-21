@@ -13,7 +13,7 @@ class Modele {
     this.perso.draw();
     console.log(this.bombs.length);
     if (this.bombs.length > 0) {
-      for (let i = this.bombs.length - 1; i >= 0 ; i++) {
+      for (let i = this.bombs.length - 1; i >= 0 ; i--) {
         if (this.bombs[i].t > -100) {
           this.bombs[i].draw();
         } else {
@@ -21,6 +21,7 @@ class Modele {
         }
       }
       for (let i = 0; i < this.bombs.length; i++) {
+        console.log("i2 = " + i);
         this.bombs[i].draw();
       }
     }

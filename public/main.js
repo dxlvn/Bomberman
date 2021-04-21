@@ -27,8 +27,8 @@ var modele = new Modele(map1, perso1, bombs);
 function frame() {
   perso1.makeMove(keys);
   if (spacePressed) {
-    console.log("Bombe posée");
-    bombs.push(new Bomb(perso1.x, perso1.y, 100, map1));
+    console.log("Bombe posée a " + perso1.x/ map1.size + " "+ perso1.y/ map1.size);
+    bombs.push(new Bomb(Math.floor(perso1.x / map1.size), Math.floor(perso1.y / map1.size), 100, map1));
   }
   modele.draw();
 }
