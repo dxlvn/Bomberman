@@ -1,5 +1,5 @@
 class Bomb {
-  constructor(x, y, r, t, m) {
+  constructor(x, y, t, m) {
     this.x = x;
     this.y = y;
     this.t = t;
@@ -7,24 +7,25 @@ class Bomb {
   }
 
   draw() {
-    if (t)
-    context.beginPath();
-    context.arc(this.x * this.map.size, this.y * this.map.size, this.map.size, 0, 2 * Math.PI, false);
-    context.lineWidth = 3;
-    context.strokeStyle = "#FF0000";
-    context.stroke();
-    context.fill(); //canvas
-    this.t --;
-    if (this.t == 0) {
+    if (this.t > 0) {
+      context.beginPath();
+      context.arc(this.x * this.map.size, this.y * this.map.size, this.map.size, 0, 2 * Math.PI, false);
+      context.lineWidth = 3;
+      context.strokeStyle = "#FF0000";
+      context.stroke();
+      context.fill(); //canvas
+    }
+    if (this.t > -10) {
       this.explode();
     }
+    this.t --;
   }
 
-  disappear() {
+  explode() {
     context.beginPath();
     context.arc(this.x * this.map.size, this.y * this.map.size, this.map.size, 0, 2 * Math.PI, false);
     context.lineWidth = 3;
-    context.strokeStyle = "#FF0000";
+    context.strokeStyle = "#3399FF80";
     context.stroke();
     context.fill(); //canvas
     // faire exploser...

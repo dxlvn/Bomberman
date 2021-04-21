@@ -5,7 +5,8 @@ function keyDownHandler(e) {
   if (keysAccepted.includes(e.key) && e.key != keys[keys.length - 1]) {
     keys.push(e.key);
   }
-  if (e.key == "Space" || e.key == "Space") {
+  if (e.keyCode == 32) {
+    console.log("Space pressed");
     spacePressed == true;
   }
 }
@@ -16,7 +17,7 @@ function keyUpHandler(e) {
   if (keys.includes(e.key)) {
     keys.splice(keys.indexOf(e.key), 1);
   }
-  if (e.key == "Space" || e.key == "ArrowSpace") {
+  if (e.keyCode == 32) {
     SpacePressed = false;
   }
 }
