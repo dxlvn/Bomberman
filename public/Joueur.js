@@ -60,6 +60,8 @@ class Joueur {
     context.strokeStyle = "red";
 
     // draw a rectangle with fill and stroke
-    context.fillRect(this.x, this.y, this.size, this.size);
+    //context.fillRect(this.x, this.y, this.size, this.size);
+    var img = document.getElementById("image");
+    context.drawImage(img,this.size, this.size);
   }
 }
