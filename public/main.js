@@ -27,10 +27,10 @@ var modele = new Modele(map1, perso1, bombs);
 function frame() {
   perso1.makeMove(keys);
   if (spacePressed) {
-    console.log("Bombe posée a " + perso1.x/ map1.size + " "+ perso1.y/ map1.size);
     bombs.push(new Bomb(Math.floor(perso1.x / map1.size), Math.floor(perso1.y / map1.size), 100, map1));
   }
   modele.draw();
 }
 
-setInterval(frame, 300);
+setInterval(frame, 30);
+// la bombe ne se place pas comme il faut c'est tjrs en haut a gauche, le principe de la partie entiere et tt ne marche pas

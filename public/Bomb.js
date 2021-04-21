@@ -9,17 +9,18 @@ class Bomb {
   draw() {
     if (this.t > 0) {
       context.beginPath();
-      context.arc(this.x * this.map.size, this.y * this.map.size, this.map.size, 0, 2 * Math.PI, false);
+      context.arc(this.x * this.map.size + this.map.size/2, this.y * this.map.size + this.map.size/2, this.map.size/2, 0, 2 * Math.PI, false);
       context.lineWidth = 3;
+      context.fillStyle = "#FF9090";
       context.strokeStyle = "#FF0000";
       context.stroke();
-      context.fill(); //canvas
+      context.fill();
     } else if (this.t > -10) {
       this.explode();
     }
     this.t--;
   }
-
+// la bombe ne se place pas comme il faut c'est tjrs en haut a gauche, le principe de la partie entiere et tt ne marche pas
   explode() {
     context.beginPath();
     context.arc(this.x * this.map.size + this.map.size/2, this.y * this.map.size + this.map.size/2, this.map.size / 2, 0, 2 * Math.PI, false);

@@ -18,7 +18,6 @@ function keyUpHandler(e) {
     keys.splice(keys.indexOf(e.key), 1);
   }
   if (e.keyCode == 32) {
-    console.log("Space released");
     spacePressed = false;
   }
 }

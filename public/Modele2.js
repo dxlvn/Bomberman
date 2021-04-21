@@ -21,7 +21,6 @@ class Modele {
         }
       }
       for (let i = 0; i < this.bombs.length; i++) {
-        console.log("i2 = " + i);
         this.bombs[i].draw();
       }
     }
