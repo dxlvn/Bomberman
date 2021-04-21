@@ -9,7 +9,8 @@ class Bomb {
   draw() {
     if (this.t > 0) {
       context.beginPath();
-      context.arc(this.x * this.map.size + this.map.size/2, this.y * this.map.size + this.map.size/2, this.map.size/2, 0, 2 * Math.PI, false);
+      //context.arc(this.x * this.map.size + this.map.size/2, this.y * this.map.size + this.map.size/2, this.map.size/2, 0, 2 * Math.PI, false);
+      context.arc(this.x + this.map.size/2, this.y * this.map.size + this.map.size/2, this.map.size/2, 0, 2 * Math.PI, false);
       context.lineWidth = 3;
       context.fillStyle = "#FF9090";
       context.strokeStyle = "#FF0000";
