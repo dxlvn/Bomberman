@@ -62,6 +62,6 @@ class Joueur {
     // draw a rectangle with fill and stroke
     //context.fillRect(this.x, this.y, this.size, this.size);
     var img = document.getElementById("image");
-    context.drawImage(img,this.size, this.size);
+    context.drawImage(img,this.x, this.y,this.size, this.size);
   }
 }
