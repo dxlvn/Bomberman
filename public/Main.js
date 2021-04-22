@@ -18,9 +18,26 @@ document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
 
 // appel pour l'affichage
-var screenHeight = window.ineerHeight;
-var screen
-var map1 = new Map(11, 15, 25, canvas);
+var nbCaseX = 11;
+var nbCaseY = 15;
+
+var screenHeight = window.ineerHeight - 15;
+var screenWidth = window.ineerWidth - 15;
+
+
+var tailleCase1 = screenHeight / nbCaseY;
+var tailleCase2 = screenWidth / nbCaseX;
+
+var tCaseFinale;
+if (tailleCase1 >tailleCase2) {
+  tCaseFinale = tailleCase2;
+}else {
+  tCaseFinale = tailleCase1;
+}
+
+
+
+var map1 = new Map(nbCaseX, nbCaseY, tCaseFinale, canvas);
 var perso1 = new Joueur(0, 0, map1);
 var j1 = {perso:perso1, bombs:[], name:"Joueur 1"};
 
@@ -40,6 +57,7 @@ function frame() {
   if (spacePressed) {
     j1.bombs.push(new Bomb(Math.floor((perso1.x + perso1.size/2) / map1.size), Math.floor((perso1.y + perso1.size/2) / map1.size), 150, map1));
   }
+  //modele.compute();
   modele.draw();
 }
 
