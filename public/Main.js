@@ -21,23 +21,19 @@ document.addEventListener("keyup", keyUpHandler, false);
 var nbCaseX = 11;
 var nbCaseY = 15;
 
-var screenHeight = window.ineerHeight - 15;
-var screenWidth = window.ineerWidth - 15;
+var screenHeight = window.innerHeight * (4/5);
+var screenWidth = window.innerWidth * (4/5);
 
 
 var tailleCase1 = screenHeight / nbCaseY;
 var tailleCase2 = screenWidth / nbCaseX;
 
-var tCaseFinale;
+var tCaseFinale = Math.floor(tailleCase1);
 if (tailleCase1 >tailleCase2) {
-  tCaseFinale = tailleCase2;
-}else {
-  tCaseFinale = tailleCase1;
+  tCaseFinale = Math.floor(tailleCase2);
 }
 
-
-
-var map1 = new Map(nbCaseX, nbCaseY, tCaseFinale, canvas);
+var map1 = new Map(nbCaseX, nbCaseY, tCaseFinale, canvas); //tCaseFinale
 var perso1 = new Joueur(0, 0, map1);
 var j1 = {perso:perso1, bombs:[], name:"Joueur 1"};
 
