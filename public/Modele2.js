@@ -21,7 +21,7 @@ class Modele {
           if(this.joueurs[i].bombs[j].isExploding && boom){
             
             this.joueurs[k].perso.prendDegats();
-            console.log("Vie joueur "+k+":"+this.joueurs[k].perso.vie);
+            console.log("Vie "+this.joueurs[k].name+" : "+this.joueurs[k].perso.vie);
             if (this.joueurs[k].perso.vie == 0){
               alert("Game over");
             }

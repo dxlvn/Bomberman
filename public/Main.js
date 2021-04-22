@@ -13,15 +13,15 @@ var context = canvas.getContext("2d");
 var INTERVAL = 30;
 var spacePressed = false;
 var keys = [];
-var bombs = [];
 
 document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
 
 // appel pour l'affichage
-var map1 = new Map(11, 15, 30, canvas);
+var screenHeight = window.ineerHeight;
+var screen
+var map1 = new Map(11, 15, 25, canvas);
 var perso1 = new Joueur(0, 0, map1);
-var modele = new Modele(map1, perso1, bombs);
 var j1 = {perso:perso1, bombs:[], name:"Joueur 1"};
 
 
