@@ -9,6 +9,7 @@ class Joueur {
     this.size = size;
     this.map = m;
     //this.varm = document.getElementById("image");
+    this.blood = 
   }
   
   

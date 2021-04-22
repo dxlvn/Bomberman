@@ -24,7 +24,6 @@ class Bomb {
       
     } else if (this.t > -10) {
       this.explode();
-      if (this.t == -5) {}
       this.audioExplosion.play();
     }
     this.t--;

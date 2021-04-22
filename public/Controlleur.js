@@ -7,7 +7,6 @@ function keyDownHandler(e) {
   }
   if (e.keyCode == 32) {
     spacePressed = true;
-    this.Bomb.draw();
   }
 }
 
