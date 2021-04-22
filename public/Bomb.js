@@ -1,6 +1,4 @@
 class Bomb {
-
-  
   constructor(x, y, t, m) {
     this.x = x;
     this.y = y;
@@ -11,7 +9,6 @@ class Bomb {
   }
 
   draw() {
-    
     if (this.t > 0) {
       context.beginPath();
       context.arc(this.x * this.map.size + this.map.size/2, this.y * this.map.size + this.map.size/2, this.map.size/2, 0, 2 * Math.PI, false);

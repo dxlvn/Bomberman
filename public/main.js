@@ -21,22 +21,16 @@ document.addEventListener("keyup", keyUpHandler, false);
 var map1 = new Map(11, 15, 20, canvas);
 var perso1 = new Joueur(0, 0, 2, 15, map1);
 var modele = new Modele(map1, perso1, bombs);
-
-/*
-var perso1 = new Joueur(0, 0, 2, 15, map1);
-var bomb1 = new Bomb(70,10,8,map1, false,false);
-var j1 = {perso:perso1, bomb:bomb1, name:"Joueur 1"};
+var j1 = {perso:perso1, bomb:[], name:"Joueur 1"};
 
 
 
 var perso2 = new Joueur(100 ,0, 2, 15,map1);
-var bomb2 = new Bomb(70,10,8,map1, false, false);
-var j2 = {perso:perso2, bomb:bomb2,  name:"Joueur 2"};
+var j2 = {perso:perso2, bomb:[],  name:"Joueur 2"};
 
 var joueurs = [j1,j2];
 
 var modele = new Modele(map1, joueurs);
-*/
 
 
 //window.addEventListener("keydown", doKeyDown, true);
