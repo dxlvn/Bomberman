@@ -10,6 +10,7 @@ const canvas = document.getElementById("map");
 // get the context
 var context = canvas.getContext("2d");
 
+var INTERVAL = 30;
 var spacePressed = false;
 var keys = [];
 var bombs = [];
@@ -42,5 +43,5 @@ function frame() {
   modele.draw();
 }
 
-setInterval(frame, 30);
+setInterval(frame, INTERVAL);
 // la bombe ne se place pas comme il faut c'est tjrs en haut a gauche, le principe de la partie entiere et tt ne marche pas
