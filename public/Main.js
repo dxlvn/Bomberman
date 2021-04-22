@@ -1,6 +1,6 @@
 
-import * as Map from "./Map.js";
 /*
+import * as Map from './Map.js'
 import Joueur from "Joueur.js";
 import Modele from "Modele2.js";
 import Bomb from "Bomb.js";
@@ -9,8 +9,6 @@ import { keyDownHandler, keyUpHandler } from "Controlleur.js";*/
 const canvas = document.getElementById("map");
 // get the context
 var context = canvas.getContext("2d");
-
-console.log((20 + 2 > 20) + 0);
 
 var INTERVAL = 30;
 var spacePressed = false;
@@ -32,7 +30,7 @@ var tailleCase2 = screenWidth / nbCaseX;
 
 var tCaseFinale = Math.floor(tailleCase1);
 if (tailleCase1 >tailleCase2) {
-  tCaseFinale = Math.floor(tailleCase2);
+  tCaseFinale = Math.floor(tailleCase2);0
 }
 
 var map1 = new Map(nbCaseX, nbCaseY, tCaseFinale, canvas); //tCaseFinale

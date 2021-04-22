@@ -1,6 +1,8 @@
 //CLasse representant un joueur
 class Joueur {
   constructor(x, y, m) {
+    this.caseX = 0;
+    this.caseY = 0;
     this.x = x;
     this.y = y;
     //Taille d'un deplacement (en pixel)
@@ -49,19 +51,21 @@ class Joueur {
   //Deplace le joueur dans le x et y indiqué
   //Possibilité d'ajouter un parametre pour la direction
   move(xDep, yDep) {
+    let decalageCaseX = this.caseX + xDep * this.dep > this.map.size;
+    let decalageCaseY = this.caseY + yDep * this.dep > this.map.size;
     //Test de collision
     if (
       //Teste le coin haut gauche
-      this.map.isCaseLibre(this, this.x + xDep * this.dep, this.y + yDep * this.dep) &&
+      this.map.isCaseLibre(this, this.x, this.y + decalageCaseY) &&
       //Teste le coin haut doite
-      this.map.isCaseLibre(this, this.x + xDep * this.dep + this.size, this.y + yDep * this.dep) &&
+      this.map.isCaseLibre(this, this.x + decalageCaseX, this.y) &&
       //Teste le coin bas gauche
-      this.map.isCaseLibre(this, this.x + xDep * this.dep, this.y + yDep * this.dep + this.size) &&
+      this.map.isCaseLibre(this, this.x, this.y + decalageCaseY) &&
       //Teste le coin bas droite
-      this.map.isCaseLibre(this, this.x + xDep * this.dep + this.size, this.y + yDep * this.dep + this.size)
+      this.map.isCaseLibre(this, this.x + decalageCaseX, this.y + decalageCaseY)
     ) {
-      this.x += xDep * this.dep;
-      this.y += yDep * this.dep;
+      this.caseX += xDep * this.dep;
+      this.caseY += yDep * this.dep;
     }
   }
   
