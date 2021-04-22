@@ -18,7 +18,7 @@ class Modele {
         
         for (var k = 0; k < this.joueurs.length; k++) {
           var boom = Math.pow(this.joueurs[i].bombs[j].x-this.joueurs[k].perso.x,2)+Math.pow(this.joueurs[i].bombs[j].y-this.joueurs[k].perso.y,2) < Math.pow(this.joueurs[i].bombs[j].r,2);
-          if(boom){
+          if(this.joueurs[i].bombs[j].isExploding && boom){
             this.joueurs[k].perso.vie--;
             if (this.joueurs[k].perso.vie == 0){
               alert("Game over");
@@ -26,7 +26,7 @@ class Modele {
           }
         }
         
-        if (this.joueurs[i].bombs[j].t < -100) {
+        if (this.joueurs[i].bombs[j].t < 0) {
           this.joueurs[i].bombs.splice(j,1);
         }
       }

@@ -8,7 +8,7 @@ class Joueur {
     //Taille du joueur (en pixel)
     this.size = size;
     this.map = m;
-    this.vie = 1;
+    this.vie = 3;
     //this.varm = document.getElementById("image");
     //this.blood = 
   }
