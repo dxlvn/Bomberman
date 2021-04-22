@@ -24,6 +24,7 @@ class Bomb {
       
     } else if (this.t > -10) {
       this.explode();
+      if (this.t == -5) {}
       this.audioExplosion.play();
     }
     this.t--;
@@ -36,21 +37,6 @@ class Bomb {
     context.lineWidth = 3;
     context.strokeStyle = "#3399FF80";
     context.stroke();
-    
-    
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
     context.fill(); //canvas
     // faire exploser...
     /*                  *

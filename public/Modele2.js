@@ -24,9 +24,5 @@ class Modele {
         this.bombs[i].draw();
       }
     }
-    /*
-    var bombe1 = new Bomb(40, 42, 80, 10);
-    bombe1.draw();
-    */
   }
 }
