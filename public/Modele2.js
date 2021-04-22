@@ -24,7 +24,6 @@ class Modele {
               alert("Game over");
             }
           }
-          this.joueurs[i].bomb.exploded = false;
         }
         
         if (this.joueurs[i].bombs[j].t < -100) {

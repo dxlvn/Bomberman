@@ -22,12 +22,12 @@ document.addEventListener("keyup", keyUpHandler, false);
 var map1 = new Map(11, 15, 20, canvas);
 var perso1 = new Joueur(0, 0, 2, 15, map1);
 var modele = new Modele(map1, perso1, bombs);
-var j1 = {perso:perso1, bomb:[], name:"Joueur 1"};
+var j1 = {perso:perso1, bombs:[], name:"Joueur 1"};
 
 
 
 var perso2 = new Joueur(100 ,0, 2, 15,map1);
-var j2 = {perso:perso2, bomb:[],  name:"Joueur 2"};
+var j2 = {perso:perso2, bombs:[],  name:"Joueur 2"};
 
 var joueurs = [j1,j2];
 
@@ -38,7 +38,7 @@ var modele = new Modele(map1, joueurs);
 function frame() {
   perso1.makeMove(keys);
   if (spacePressed) {
-    bombs.push(new Bomb(Math.floor((perso1.x + perso1.size/2) / map1.size), Math.floor((perso1.y + perso1.size/2) / map1.size), 100, map1));
+    j1.bombs.push(new Bomb(Math.floor((perso1.x + perso1.size/2) / map1.size), Math.floor((perso1.y + perso1.size/2) / map1.size), 100, map1));
   }
   modele.draw();
 }

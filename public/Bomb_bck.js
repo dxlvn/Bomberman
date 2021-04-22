@@ -33,21 +33,6 @@ class Bomb {
     context.lineWidth = 3;
     context.strokeStyle = "#3399FF80";
     context.stroke();
-    context.fill(); //canvas
-    // faire exploser...
-    /*                  *
-    Faire exploser    * * *  (x,y) centre
-    suivant ce schema   *
-    
-    explose (x,y) if isCaseLibre
-    explose (x+1,y) if isCaseLibre
-    explose (x-1,y) if isCaseLibre 
-    explose (x,y+1) if isCaseLibre  
-    explose (x,y-1) if isCaseLibre
-    // rajouter les dégats sur la vie des persos quand on l'aura fait
-   
-    context.clear();
-    context.closePath();
-    */
+    context.fill();
   }
 }
