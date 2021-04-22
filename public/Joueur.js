@@ -9,6 +9,7 @@ class Joueur {
     this.size = size;
     this.map = m;
     this.vie = 3;
+    this.invinsibilite = 0;
     //this.varm = document.getElementById("image");
     //this.blood = 
   }
@@ -63,8 +64,18 @@ class Joueur {
       this.y += yDep * this.dep;
     }
   }
+  
+  prendDegats() {
+    if (this.vie > 0 && this.invinsibilite == 0) {
+      this.vie--;
+      this.invinsibilite = 10;
+    }
+  }
 
   draw() {
+    if (this.invinsibilite > 0) {
+      this.invinsibilite--;
+    }
     // set fill and stroke styles
     context.lineWidth = 2;
     context.fillStyle = "red";

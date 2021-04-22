@@ -21,15 +21,15 @@ class Bomb {
     
     context.beginPath();
     context.arc(this.x, this.y, this.r, 0, 2*Math.PI);
+    context.lineWidth = 3;
     //Animation un et deux intervalle(s) avant l'explosion 
     if (this.t >= 10) {
-      context.lineWidth = 3;
-      context.fillStyle = "#FF9090";
-      context.strokeStyle = "#FF0000";
+      context.fillStyle = "#4F94FF80";
+      context.strokeStyle = "#3399FF80";
     } else if (this.t >= 0){
       this.isExploding = true;
       this.audioExplosion.play();
-      context.lineWidth = 3;
+      context.fillStyle = "#4F94FF80";
       context.strokeStyle = "#3399FF80";
     } 
     context.stroke();
