@@ -1,9 +1,8 @@
 // Representation deu jeu Bomber's
 class Modele {
-  constructor(m, p, bombs){ 
+  constructor(m, joueurs){ 
     this.map = m;
-    this.perso = p;
-    this.bombs = bombs;
+    this.joueurs = joueurs;
   }
 
   //Dessiner la map et le joueur
