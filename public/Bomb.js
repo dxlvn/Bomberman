@@ -14,10 +14,6 @@ class Bomb {
   
   draw() {
     this.t--;
-    if (this.t < 50) {
-      this.r += 0.3; 
-    }
-    //affichage toutes les 25ms et explosion après 60s (69*25ms)
     
     context.beginPath();
     context.arc(this.x, this.y, this.r, 0, 2*Math.PI);
@@ -27,10 +23,11 @@ class Bomb {
       context.fillStyle = "#4F94FF80";
       context.strokeStyle = "#3399FF80";
     } else if (this.t >= 0){
+      this.r *= 1.1;
       this.isExploding = true;
       this.audioExplosion.play();
-      context.fillStyle = "#4F94FF80";
-      context.strokeStyle = "#3399FF80";
+      context.fillStyle = "#FF0A2180";
+      context.strokeStyle = "#FF0A2180";
     } 
     context.stroke();
     context.fill();

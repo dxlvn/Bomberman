@@ -69,6 +69,8 @@ class Joueur {
     if (this.vie > 0 && this.invinsibilite == 0) {
       this.vie--;
       this.invinsibilite = 10;
+    } else if (this.vie == 0) {
+      this.vie--;
     }
   }
 
