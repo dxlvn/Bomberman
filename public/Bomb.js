@@ -23,7 +23,7 @@ class Bomb {
       context.fillStyle = "#4F94FF80";
       context.strokeStyle = "#3399FF80";
     } else if (this.t >= 0){
-      this.r *= 1.1;
+      this.r *= 1.11;
       this.isExploding = true;
       this.audioExplosion.play();
       context.fillStyle = "#FF0A2180";

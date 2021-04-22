@@ -19,7 +19,7 @@ document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
 
 // appel pour l'affichage
-var map1 = new Map(11, 15, 50, canvas);
+var map1 = new Map(11, 15, 30, canvas);
 var perso1 = new Joueur(0, 0, 2, 15, map1);
 var modele = new Modele(map1, perso1, bombs);
 var j1 = {perso:perso1, bombs:[], name:"Joueur 1"};

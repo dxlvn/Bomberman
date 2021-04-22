@@ -6,7 +6,7 @@ class Joueur {
     //Taille d'un deplacement (en pixel)
     this.dep = dep;
     //Taille du joueur (en pixel)
-    this.size = size;
+    this.size = m.size - m.size/10;
     this.map = m;
     this.vie = 3;
     this.invinsibilite = 0;
@@ -68,7 +68,7 @@ class Joueur {
   prendDegats() {
     if (this.vie > 0 && this.invinsibilite == 0) {
       this.vie--;
-      this.invinsibilite = 10;
+      this.invinsibilite = 12;
     } else if (this.vie == 0) {
       this.vie--;
     }
