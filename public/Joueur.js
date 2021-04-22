@@ -1,10 +1,10 @@
 //CLasse representant un joueur
 class Joueur {
-  constructor(x, y, dep, size, m) {
+  constructor(x, y, m) {
     this.x = x;
     this.y = y;
     //Taille d'un deplacement (en pixel)
-    this.dep = dep;
+    this.dep = m.size/12;
     //Taille du joueur (en pixel)
     this.size = m.size - m.size/10;
     this.map = m;
