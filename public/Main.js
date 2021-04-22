@@ -5,7 +5,6 @@ import Modele from "Modele2.js";
 import Bomb from "Bomb.js";
 import { keyDownHandler, keyUpHandler } from "Controlleur.js";*/
 
-
 const canvas = document.getElementById("map");
 // get the context
 var context = canvas.getContext("2d");
