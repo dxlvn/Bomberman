@@ -1,3 +1,3 @@
 <script>
   document.getElementById("fname");
-</script>  
+</script>
