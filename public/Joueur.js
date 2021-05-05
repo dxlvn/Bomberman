@@ -96,6 +96,10 @@ class Joueur {
     }
   }
   
+  testPrendDegat() {
+    
+  }
+  
   prendDegats() {
     if (this.vie > 0 && this.invinsibilite == 0) {
       this.vie--;
@@ -135,6 +139,8 @@ class Joueur {
     } else {
       this.varm = document.getElementById(this.direction + "1");
     }
-    context.drawImage(this.varm,this.x, this.y,this.size, this.size);
+    if (!(this.invisibilite > 0 && this.invisibilite%3 == 0)) {
+      context.drawImage(this.varm,this.x, this.y,this.size, this.size);
+    }
   }
 }

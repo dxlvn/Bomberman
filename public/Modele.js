@@ -14,18 +14,6 @@ class Modele {
       for (let j = this.joueurs[i].bombs.length - 1; j >= 0; j--) {
         this.joueurs[i].bombs[j].compute();
         
-        for (var k = 0; k < this.joueurs.length; k++) {
-          var boom = Math.pow(this.joueurs[i].bombs[j].x-this.joueurs[k].x,2)+Math.pow(this.joueurs[i].bombs[j].y-this.joueurs[k].y,2) < Math.pow(this.joueurs[i].bombs[j].r,2);
-          if(this.joueurs[i].bombs[j].isExploding && boom){
-            
-            this.joueurs[k].prendDegats();
-            console.log("Vie "+this.joueurs[k].name+" : "+this.joueurs[k].vie);
-            if (this.joueurs[k].vie == 0){
-              alert("Game over");
-            }
-          }
-        }
-        
         if (this.joueurs[i].bombs[j].t < 0) {
           this.joueurs[i].bombs.splice(j,1);
         }
@@ -40,6 +28,10 @@ class Modele {
     
     for (let i = 0; i < this.joueurs.length; i++) {
       this.joueurs[i].draw();
+      console.log("Vie " + this.joueurs[i].name + " : " + this.joueurs[i].vie);
+      if (this.joueurs[i].vie == 0){
+        alert("Game over  " + this.joueurs[i].name);
+      }
       
       for (let j = this.joueurs[i].bombs.length - 1; j >= 0; j--) {
         this.joueurs[i].bombs[j].draw();
