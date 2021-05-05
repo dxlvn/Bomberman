@@ -12,10 +12,11 @@ class Map {
     for (let i = 0; i < this.width; i++) {
       this.p[i] = [];
       for (let j = 0; j < this.height; j++) {
-        this.p[i][j] = 0;
         //Crée un motif de blocs
         if (i % 2 == 1 && j % 2 == 1) {
-          this.p[i][j] = 1;
+          this.p[i][j] = new Case(i,j, false);
+        } else {
+          this.p[i][j] = new Case(i,j, true);
         }
       }
     }
@@ -29,10 +30,10 @@ class Map {
       return false;
     }
     //Vérifie que la case n'est pas occupée
-    if (this.p[Math.floor(x / this.size)][Math.floor(y / this.size)] != 0) {
-      return false;
+    if (this.p[Math.floor(x / this.size)][Math.floor(y / this.size)].isFranchissable()) {
+      return true;
     }
-    return true;
+    return false;
   }
 
   //Dessiner la map
@@ -47,10 +48,10 @@ class Map {
       for (var j = 0; j < this.height; j++) {
         var x_case = i * this.size;
         var y_case = j * this.size;
-        if (this.p[i][j] == 1) {
-          context.fillStyle = "black";
-        } else {
+        if (this.p[i][j].isFranchissable()) {
           context.fillStyle = "white";
+        } else {
+          context.fillStyle = "black";
         }
         context.fillRect(x_case, y_case, this.size, this.size);
         context.strokeRect(x_case, y_case, this.size, this.size);

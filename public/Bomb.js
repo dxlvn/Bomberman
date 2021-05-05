@@ -14,22 +14,25 @@ class Bomb {
   
   draw() {
     this.t--;
-    
-    context.beginPath();
-    context.arc(this.x, this.y, this.r, 0, 2*Math.PI);
-    context.lineWidth = 3;
-    //Animation un et deux intervalle(s) avant l'explosion 
-    if (this.t >= 10) {
-      context.fillStyle = "#4F94FF80";
-      context.strokeStyle = "#3399FF80";
-    } else if (this.t >= 0){
-      this.r *= 1.11;
-      this.isExploding = true;
-      this.audioExplosion.play();
-      context.fillStyle = "#FF0A2180";
-      context.strokeStyle = "#FF0A2180";
-    } 
-    context.stroke();
-    context.fill();
+    console.log(this.t);
+    if (this.t >= 0) {
+      context.beginPath();
+      context.arc(this.x, this.y, this.r, 0, 2*Math.PI);
+      context.lineWidth = 3;
+      //Animation un et deux intervalle(s) avant l'explosion 
+      if (this.t >= 10) {
+        context.fillStyle = "#4F94FF80";
+        context.strokeStyle = "#3399FF80";
+      } else if (this.t >= 0){
+        console.log("Bombe");
+        this.r *= 1.11;
+        this.isExploding = true;
+        this.audioExplosion.play();
+        context.fillStyle = "#FF0A2180";
+        context.strokeStyle = "#FF0A2180";
+      } 
+      context.stroke();
+      context.fill();
+    }
   }
 }
