@@ -1,6 +1,6 @@
 //CLasse representant un joueur
 class Joueur {
-  constructor(name, x, y, m) {
+  constructor(x, y, name, m) {
     this.name = name;
     this.x = x;
     this.y = y;
@@ -19,8 +19,11 @@ class Joueur {
   }
   
   dropBomb() {
-    if (this.bombCooldown > 0) {
-      return false;
+    if (this.bombCooldown == 0) {
+      this.bombs.push(new Bomb(Math.floor((this.x + this.size/2) / this.map.size), Math.floor((this.y + this.size/2) / this.map.size), 150, this.map));
+      this.bombCooldown = 100;
+    } else {
+      this.bombCooldown --;
     }
     
   }
@@ -59,6 +62,7 @@ class Joueur {
   //Possibilité d'ajouter un parametre pour la direction
   move(xDep, yDep) {
     //Test de collision
+    console.log((this.x + xDep * this.dep)+ "  ---  " + this.y + " --- " + yDep * this.dep);
     if (
       //Teste le coin haut gauche
       this.map.isCaseLibre(this, this.x + xDep * this.dep, this.y + yDep * this.dep) &&

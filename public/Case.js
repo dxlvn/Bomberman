@@ -14,8 +14,8 @@ class Case {
   }
   
   draw() {
-    context.fillRect(x_case, y_case, this.size, this.size);
-    context.strokeRect(x_case, y_case, this.size, this.size);
+    context.fillRect(this.x * this.size, this.y * this.size, this.size, this.size);
+    context.strokeRect(this.x * this.size, this.y * this.size, this.size, this.size);
   }
   
 }

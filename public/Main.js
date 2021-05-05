@@ -34,13 +34,9 @@ if (tailleCase1 >tailleCase2) {
 }
 
 var map1 = new Map(nbCaseX, nbCaseY, tCaseFinale, canvas); //tCaseFinale
-var perso1 = new Joueur(0, 0, map1);
-var j1 = {perso:perso1, bombs:[], name:"Joueur 1"};
+var j1 = new Joueur(0, 0, "Joueur 1", map1);
 
-
-
-var perso2 = new Joueur(100, 0, map1);
-var j2 = {perso:perso2, bombs:[],  name:"Joueur 2"};
+var j2 = new Joueur(100, 0, "Joueur 2", map1);
 
 var joueurs = [j1,j2];
 
@@ -49,11 +45,9 @@ var modele = new Modele(map1, joueurs);
 
 //window.addEventListener("keydown", doKeyDown, true);
 function frame() {
-  perso1.makeMove(keys);
+  j1.makeMove(keys);
   if (spacePressed) {
-    if (j1.perso.dropBomb()) {
-      j1.bombs.push(new Bomb(Math.floor((perso1.x + perso1.size/2) / map1.size), Math.floor((perso1.y + perso1.size/2) / map1.size), 150, map1));
-    }
+    j1.dropBomb()
   }
   //modele.compute();
   modele.draw();
