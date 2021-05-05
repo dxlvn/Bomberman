@@ -12,6 +12,7 @@ class Joueur {
     this.vie = 3;
     this.invinsibilite = 0;
     
+    this.nombreBombMax = 1;
     this.bombs = [];
     this.bombCooldown = 0;
     //this.varm = document.getElementById("image");
@@ -20,12 +21,9 @@ class Joueur {
   
   dropBomb() {
     if (this.bombCooldown == 0) {
-      this.bombs.push(new Bomb(Math.floor((this.x + this.size/2) / this.map.size), Math.floor((this.y + this.size/2) / this.map.size), 150, this.map));
+      this.bombs.push(new Bomb(Math.floor((this.x + this.size/2) / this.map.size), Math.floor((this.y + this.size/2) / this.map.size), 100, this.map));
       this.bombCooldown = 100;
-    } else {
-      this.bombCooldown --;
     }
-    
   }
 
   makeMove(keys) {
@@ -62,7 +60,6 @@ class Joueur {
   //Possibilité d'ajouter un parametre pour la direction
   move(xDep, yDep) {
     //Test de collision
-    console.log((this.x + xDep * this.dep)+ "  ---  " + this.y + " --- " + yDep * this.dep);
     if (
       //Teste le coin haut gauche
       this.map.isCaseLibre(this, this.x + xDep * this.dep, this.y + yDep * this.dep) &&
@@ -88,6 +85,9 @@ class Joueur {
   }
 
   draw() {
+    if (this.bombCooldown > 0) {
+      this.bombCooldown --;
+    }
     if (this.invinsibilite > 0) {
       this.invinsibilite--;
     }
