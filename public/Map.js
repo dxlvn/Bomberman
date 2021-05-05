@@ -14,9 +14,9 @@ class Map {
       for (let j = 0; j < this.height; j++) {
         //Crée un motif de blocs
         if (i % 2 == 1 && j % 2 == 1) {
-          this.p[i][j] = new Case(i,j, this.size, false);
+          this.p[i][j] = new Case(this, i,j, this.size, false);
         } else {
-          this.p[i][j] = new Case(i,j, this.size, true);
+          this.p[i][j] = new Case(this, i,j, this.size, true);
         }
       }
     }
@@ -45,20 +45,6 @@ class Map {
     let modif = false;
     for (var i = 0; i < this.width; i++) {
       for (var j = 0; j < this.height; j++) {
-        if (this.p[i][j].bombExplosion > 0) {
-          
-          let bombDirectionX = this.p[i][j].bombDirection[0];
-          let bombDirectionY = this.p[i][j].bombDirection[1];
-          if (bombDirectionX == 0 && bombDirectionY == 0) {
-            
-          } else {
-            if (this.isCaseValide(i + bombDirectionX, j + bombDirectionY)) {
-              this.p[i + bombDirectionX][j + bombDirectionY].bombExplosion = this.p[i][j].bombExplosion - 1;
-              this.p[i + bombDirectionX][j + bombDirectionY].bombDirection = this.p[i][j].bombDirection - 1;
-            }
-          }
-        }
-        
         this.p[i][j].compute();
       }
     }
