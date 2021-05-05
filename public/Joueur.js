@@ -50,7 +50,11 @@ class Joueur {
       }
     }
     if (moveDep[0][0] == 1) {
-      this.direction = "left";
+      this.direction = "right";
+    } else if (moveDep[0][0] == -1) {
+      this.direction = "right";
+    } else if (moveDep[0][1] == 1) {
+      this.direction = "down";
     } else {
       this.direction = "idle";
     }
