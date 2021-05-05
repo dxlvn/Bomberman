@@ -1,10 +1,10 @@
 class Case {
-  constructor(m, x, y, size, obstacle) {
+  constructor(m, x, y, size, franchissable) {
     this.map = m;
     this.x = x;
     this.y = y;
     this.size = size;
-    this.obstacle = obstacle;
+    this.franchissable = franchissable;
     this.bombExplosion = 0;
     this.bombDirection = [0, 0];
     this.bombTime = 0;
@@ -12,16 +12,22 @@ class Case {
   }
 
   isFranchissable() {
-    return this.obstacle;
+    return this.franchissable;
   }
 
   addBombExplosion(force, x, y) {
-    if (force > 0) {
+    if (this.franchissable && force > 0) {
       this.bombExplosion = force;
       if (x == 0 && y == 0) {
         for (let i = 0; i < 4; i++) {
-          let directionX = i%2 * 2 - 1;
-          let directionY = (i+1)%2 * 2 - 1;
+          let directionX = i%2;
+          if (i == 3) {
+            directionX = -directionX;
+          }
+          let directionY = (i+1)%2;
+          if (i == 2) {
+            directionY = -directionY;
+          }
           if (this.map.isCaseValide(this.x + directionX, this.y + directionY)) {
             this.map.p[this.x + directionX][this.y + directionY].addBombExplosion(force -1, directionX, directionY);
           }

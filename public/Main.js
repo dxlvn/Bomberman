@@ -18,8 +18,8 @@ document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
 
 // appel pour l'affichage
-var nbCaseX = 31;
-var nbCaseY = 11;
+var nbCaseX = 21;
+var nbCaseY = 15;
 
 var screenHeight = window.innerHeight * (4/5);
 var screenWidth = window.innerWidth * (4/5);
