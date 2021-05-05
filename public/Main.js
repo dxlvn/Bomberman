@@ -18,8 +18,8 @@ document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
 
 // appel pour l'affichage
-var nbCaseX = 11;
-var nbCaseY = 15;
+var nbCaseX = 31;
+var nbCaseY = 11;
 
 var screenHeight = window.innerHeight * (4/5);
 var screenWidth = window.innerWidth * (4/5);
@@ -30,7 +30,7 @@ var tailleCase2 = screenWidth / nbCaseX;
 
 var tCaseFinale = Math.floor(tailleCase1);
 if (tailleCase1 >tailleCase2) {
-  tCaseFinale = Math.floor(tailleCase2);0
+  tCaseFinale = Math.floor(tailleCase2);
 }
 
 var map1 = new Map(nbCaseX, nbCaseY, tCaseFinale, canvas); //tCaseFinale
@@ -49,7 +49,7 @@ function frame() {
   if (spacePressed) {
     j1.dropBomb()
   }
-  //modele.compute();
+  modele.compute();
   modele.draw();
 }
 

@@ -83,14 +83,17 @@ class Joueur {
       this.vie--;
     }
   }
-
-  draw() {
+  
+  compute() {
     if (this.bombCooldown > 0) {
       this.bombCooldown --;
     }
     if (this.invinsibilite > 0) {
       this.invinsibilite--;
     }
+  }
+
+  draw() {
     // set fill and stroke styles
     context.lineWidth = 2;
     context.fillStyle = "red";

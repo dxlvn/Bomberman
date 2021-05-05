@@ -10,11 +10,12 @@ class Bomb {
     this.isExploding = false;
     this.audioExplosion = new Audio('https://cdn.glitch.com/78539be0-7261-4593-9d5a-b8d0ccd26f37%2FaudioExplosion%20(mp3cut.net).mp3?v=1619046058517');
   }
-
+  
+  compute() {
+    this.t--;
+  }
   
   draw() {
-    this.t--;
-    console.log(this.t);
     if (this.t >= 0) {
       context.beginPath();
       context.arc(this.x, this.y, this.r, 0, 2*Math.PI);
