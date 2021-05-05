@@ -88,26 +88,41 @@ class Joueur {
     let d = this.subX + xDep * this.dep + this.size;
     let h = this.y + yDep * this.dep + this.size/4;
     let b = this.y + yDep * this.dep + this.size;
+    let coords = [g, d, h, b];
+    for (let i = 0; i < coords.length; i++) {
+      if (coords[i] < 0) {
+        coords[i] = -1;
+      } else if (coords[i] > this.size_case) {
+        coords[i] = 1;
+      }
+    }
     //Test de collision
     if (
       //Teste le coin haut gauche
-      this.map.isCaseLibre(this, this.x + xDep * this.dep, this.y + yDep * this.dep + this.size/4) &&
+      this.map.isCaseLibre(this, this.x + coords[0], this.y + coords[2]) &&
       //Teste le coin haut doite
-      this.map.isCaseLibre(this, this.x + xDep * this.dep + this.size, this.y + yDep * this.dep + this.size/4) &&
+      this.map.isCaseLibre(this, this.x + coords[1], this.y + coords[2]) &&
       //Teste le coin bas gauche
-      this.map.isCaseLibre(this, this.x + xDep * this.dep, this.y + yDep * this.dep + this.size) &&
+      this.map.isCaseLibre(this, this.x + coords[0], this.y + coords[3]) &&
       //Teste le coin bas droite
-      this.map.isCaseLibre(this, this.x + xDep * this.dep + this.size, this.y + yDep * this.dep + this.size)
+      this.map.isCaseLibre(this, this.x + coords[1], this.y + coords[3])
     ) {
       this.subX += xDep * this.dep;
       this.subY += yDep * this.dep;
-      if (this.subX > this.size_case) {
+      
+      if (this.subX < 0) {
+        this.x --;
+        this.subX += this.size_case;
+      } else if (this.subX > this.size_case) {
         this.x ++;
-        this.subX = this.subX % this.size_case;
+        this.subX -= this.size_case;
       }
-      if (this.subY > this.size_case) {
+      if (this.subX < 0) {
+        this.y --;
+        this.subY += this.size_case;
+      } else if (this.subY > this.size_case) {
         this.y ++;
-        this.subY = this.subY % this.size_case;
+        this.subY -= this.size_case;
       }
     }
   }
@@ -156,7 +171,7 @@ class Joueur {
       this.varm = document.getElementById(this.direction + "1");
     }
     if (!(this.invisibilite > 0 && this.invisibilite%3 == 0)) {
-      context.drawImage(this.varm,this.x, this.y,this.size, this.size);
+      context.drawImage(this.varm, this.x * this.size_case + this.subX, this.y * this.case_size + this.subY, this.size, this.size);
     }
   }
 }
