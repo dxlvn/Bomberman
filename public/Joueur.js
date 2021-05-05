@@ -6,9 +6,12 @@ class Joueur {
     this.y = y;
     //Taille d'un deplacement (en pixel)
     this.dep = m.size/12;
+    this.direction = "idle";
+    
     //Taille du joueur (en pixel)
     this.size = m.size - m.size/10;
     this.map = m;
+    
     this.vie = 3;
     this.invinsibilite = 0;
     
@@ -45,6 +48,11 @@ class Joueur {
         moveDep[i][1] = 1;
         //direction = "down";
       }
+    }
+    if (moveDep[0][0] == 1) {
+      this.direction = "left";
+    } else {
+      this.direction = "idle";
     }
     //On fait le délacement de la derniere touche
     this.move(moveDep[0][0], moveDep[0][1]);
@@ -101,7 +109,7 @@ class Joueur {
 
     // draw a rectangle with fill and stroke
     //context.fillRect(this.x, this.y, this.size, this.size);
-    this.varm = document.getElementById("image");
+    this.varm = document.getElementById(this.direction);
     context.drawImage(this.varm,this.x, this.y,this.size, this.size);
   }
 }
