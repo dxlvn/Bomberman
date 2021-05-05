@@ -28,7 +28,7 @@ class Bomb {
         context.stroke();
         context.fill();
       } else if (this.t == 0){
-        this.m.p[this.x][this.y].addBombExplosion(this.force);
+        this.m.p[this.x][this.y].addBombExplosion(this.force, 0, 0);
         this.audioExplosion.play();
         /*
         console.log("Bombe");

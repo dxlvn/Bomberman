@@ -16,27 +16,22 @@ class Case {
   }
 
   addBombExplosion(force, x, y) {
-    this.bombExplosion = force;
-    if (x == 0 && y == 0) {
-      if (this.m.)
-    }
-    
-    /*
-    if (this.p[i][j].bombExplosion > 0) {
-      let bombDirectionX = this.p[i][j].bombDirection[0];
-      let bombDirectionY = this.p[i][j].bombDirection[1];
-      if (bombDirectionX == 0 && bombDirectionY == 0) {
-      } else {
-        if (this.isCaseValide(i + bombDirectionX, j + bombDirectionY)) {
-          this.p[i + bombDirectionX][j + bombDirectionY].bombExplosion =
-            this.p[i][j].bombExplosion - 1;
-          this.p[i + bombDirectionX][j + bombDirectionY].bombDirection = this.p[
-            i
-          ][j].bombDirection;
+    if (force > 0) {
+      this.bombExplosion = force;
+      if (x == 0 && y == 0) {
+        for (let i = 0; i < 4; i++) {
+          let directionX = i%2 * 2 - 1;
+          let directionY = (i+1)%2 * 2 - 1;
+          if (this.map.isCaseValide(this.x + directionX, this.y + directionY)) {
+            this.map.p[this.x + directionX][this.y + directionY].addBombExplosion(force -1, directionX, directionY);
+          }
         }
+      } else {
+        if (this.map.isCaseValide(this.x + x, this.y + y)) {
+            this.map.p[this.x + x][this.y + y].addBombExplosion(force -1, x, y);
+          }
       }
     }
-    */
   }
 
   compute() {
