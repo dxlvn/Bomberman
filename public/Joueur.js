@@ -12,7 +12,7 @@ class Joueur {
     this.frame = 1;
     this.frameMax = 4;
     this.interframe = 1;
-    this.interframeMax = 3;
+    this.interframeMax = 4;
     
     //Taille du joueur (en pixel)
     this.size = m.size - m.size/10;
@@ -59,7 +59,7 @@ class Joueur {
     if (moveDep[0][0] == 1) {
       this.direction = "right";
     } else if (moveDep[0][0] == -1) {
-      this.direction = "right";
+      this.direction = "left";
     } else if (moveDep[0][1] == 1) {
       this.direction = "down";
     } else if (moveDep[0][1] == -1) {
@@ -83,9 +83,9 @@ class Joueur {
     //Test de collision
     if (
       //Teste le coin haut gauche
-      this.map.isCaseLibre(this, this.x + xDep * this.dep, this.y + yDep * this.dep) &&
+      this.map.isCaseLibre(this, this.x + xDep * this.dep, this.y + yDep * this.dep + this.size/4) &&
       //Teste le coin haut doite
-      this.map.isCaseLibre(this, this.x + xDep * this.dep + this.size, this.y + yDep * this.dep) &&
+      this.map.isCaseLibre(this, this.x + xDep * this.dep + this.size, this.y + yDep * this.dep + this.size/4) &&
       //Teste le coin bas gauche
       this.map.isCaseLibre(this, this.x + xDep * this.dep, this.y + yDep * this.dep + this.size) &&
       //Teste le coin bas droite
