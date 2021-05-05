@@ -29,11 +29,13 @@ class Bomb {
       } else if (this.t == 0){
         this.m.p[this.x][this.y].bombExplosion = 10;
         this.audioExplosion.play();
+        /*
         console.log("Bombe");
         this.r *= 1.11;
         this.isExploding = true;
         context.fillStyle = "#FF0A2180";
         context.strokeStyle = "#FF0A2180";
+        */
       }
     }
   }

@@ -8,7 +8,7 @@ class Case {
     this.bombExplosion = 0;
     this.bombTime = 0;
     this.bombTimeMax = 10;
-    this.bombDirection = "";
+    this.bombDirection = [0,0];
   }
   
   isFranchissable() {
@@ -22,6 +22,7 @@ class Case {
       } else {
         this.bombExplosion = 0;
         this.bombTime = 0;
+        this.bombDirection = [0,0];
       }
     }
   }

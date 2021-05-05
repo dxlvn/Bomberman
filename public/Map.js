@@ -45,7 +45,20 @@ class Map {
     let modif = false;
     for (var i = 0; i < this.width; i++) {
       for (var j = 0; j < this.height; j++) {
-        //this.p[i][j]
+        if (this.p[i][j].bombExplosion > 0) {
+          
+          let bombDirectionX = this.p[i][j].bombDirection[0];
+          let bombDirectionY = this.p[i][j].bombDirection[1];
+          if (bombDirectionX == 0 && bombDirectionY == 0) {
+            
+          } else {
+            if (this.isCaseValide(i + bombDirectionX, j + bombDirectionY)) {
+              this.p[i + bombDirectionX][j + bombDirectionY].bombExplosion = this.p[i][j].bombExplosion - 1;
+              this.p[i + bombDirectionX][j + bombDirectionY].bombDirection = this.p[i][j].bombDirection - 1;
+            }
+          }
+        }
+        
         this.p[i][j].compute();
       }
     }
