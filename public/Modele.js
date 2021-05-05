@@ -6,6 +6,8 @@ class Modele {
   }
   
   compute() {
+    this.map.compute();
+    
     for (let i = 0; i < this.joueurs.length; i++) {
       this.joueurs[i].compute();
       

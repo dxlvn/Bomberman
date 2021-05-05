@@ -21,12 +21,17 @@ class Map {
       }
     }
   }
+  
+  isCaseValide(x, y) {
+    if ( x < 0 || y < 0 || x >= this.width || y >= this.height ) {
+      return false;
+    }
+    return true;
+  }
 
   isCaseLibre(j, x, y) {
     //On vérifie si ce n'est pas hors limite
-    if ( x < 0 || y < 0 ||
-      x / this.size > this.width ||
-      y / this.size > this.height ) {
+    if ( x < 0 || y < 0 || x / this.size >= this.width || y / this.size >= this.height ) {
       return false;
     }
     //Vérifie que la case n'est pas occupée
@@ -34,6 +39,16 @@ class Map {
       return true;
     }
     return false;
+  }
+  
+  compute() {
+    let modif = false;
+    for (var i = 0; i < this.width; i++) {
+      for (var j = 0; j < this.height; j++) {
+        //this.p[i][j]
+        this.p[i][j].compute();
+      }
+    }
   }
 
   //Dessiner la map

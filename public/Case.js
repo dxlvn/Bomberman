@@ -6,11 +6,24 @@ class Case {
     this.obstacle = obstacle;
     this.bomb = null;
     this.bombExplosion = 0;
+    this.bombTime = 0;
+    this.bombTimeMax = 10;
     this.bombDirection = "";
   }
   
   isFranchissable() {
     return this.obstacle;
+  }
+  
+  compute() {
+    if (this.bombExplosion > 0) {
+      if (this.bombTime < this.bombTimeMax) {
+        this.bombTime ++;
+      } else {
+        this.bombExplosion = 0;
+        this.bombTime = 0;
+      }
+    }
   }
   
   draw() {
