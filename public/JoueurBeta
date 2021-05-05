@@ -3,8 +3,10 @@ class Joueur {
   constructor(x, y, name, m) {
     this.name = name;
     this.x = x;
-    this.subX;
+    this.subX = 0;
     this.y = y;
+    this.subY = 0;
+    this.size_case = m.size;
     //Taille d'un deplacement (en pixel)
     this.dep = m.size/12;
     
@@ -93,8 +95,16 @@ class Joueur {
       //Teste le coin bas droite
       this.map.isCaseLibre(this, this.x + xDep * this.dep + this.size, this.y + yDep * this.dep + this.size)
     ) {
-      this.x += xDep * this.dep;
-      this.y += yDep * this.dep;
+      this.subX += xDep * this.dep;
+      this.subY += yDep * this.dep;
+      if (this.subX > this.size_case) {
+        this.x ++;
+        this.subX = this.subX % this.size_case;
+      }
+      if (this.subY > this.size_case) {
+        this.y ++;
+        this.subY = this.subY % this.size_case;
+      }
     }
   }
   
