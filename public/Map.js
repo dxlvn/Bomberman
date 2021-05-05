@@ -35,7 +35,6 @@ class Map {
       return false;
     }
     //Vérifie que la case n'est pas occupée
-    console.log(x +" "+y);
     return this.p[x][y].isFranchissable();
   }
   

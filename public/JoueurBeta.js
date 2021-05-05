@@ -1,6 +1,6 @@
 //CLasse representant un joueur
 class Joueur {
-  constructor(name, x, y, m) {
+  constructor(x, y, name, m) {
     this.name = name;
     this.x = x;
     this.subX = 0;
@@ -172,8 +172,7 @@ class Joueur {
       this.varm = document.getElementById(this.direction + "1");
     }
     if (!(this.invisibilite > 0 && this.invisibilite%3 == 0)) {
-      console.log("Draw " + this.name + "   x = " + (this.x * this.size_case + this.subX) + "   y = " + (this.y * this.case_size) + " " + this.subY);
-      context.drawImage(this.varm, this.x * this.size_case + this.subX, this.y * this.case_size + this.subY, this.size, this.size);
+      context.drawImage(this.varm, this.x * this.size_case + this.subX, this.y * this.size_case + this.subY, this.size, this.size);
     }
   }
 }
