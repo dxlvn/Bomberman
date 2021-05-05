@@ -1,6 +1,7 @@
 //CLasse representant un joueur
 class Joueur {
-  constructor(x, y, m) {
+  constructor(name, x, y, m) {
+    this.name = name;
     this.x = x;
     this.y = y;
     //Taille d'un deplacement (en pixel)
@@ -10,11 +11,19 @@ class Joueur {
     this.map = m;
     this.vie = 3;
     this.invinsibilite = 0;
+    
+    this.bombs = [];
+    this.bombCooldown = 0;
     //this.varm = document.getElementById("image");
     //this.blood = 
   }
   
-  
+  dropBomb() {
+    if (this.bombCooldown > 0) {
+      return false;
+    }
+    
+  }
 
   makeMove(keys) {
     //Regarde les deux dernieres touches enfoncées

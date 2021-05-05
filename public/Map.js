@@ -14,9 +14,9 @@ class Map {
       for (let j = 0; j < this.height; j++) {
         //Crée un motif de blocs
         if (i % 2 == 1 && j % 2 == 1) {
-          this.p[i][j] = new Case(i,j, false);
+          this.p[i][j] = new Case(i,j, this.size, false);
         } else {
-          this.p[i][j] = new Case(i,j, true);
+          this.p[i][j] = new Case(i,j, this.size, true);
         }
       }
     }
@@ -40,21 +40,17 @@ class Map {
   draw() {
     // Initialisation des variables du crayon
     context.lineWidth = 2;
-    context.fillStyle = "white";
     context.strokeStyle = "black";
 
     //Dessin des cases une par une
     for (var i = 0; i < this.width; i++) {
       for (var j = 0; j < this.height; j++) {
-        var x_case = i * this.size;
-        var y_case = j * this.size;
         if (this.p[i][j].isFranchissable()) {
           context.fillStyle = "white";
         } else {
           context.fillStyle = "black";
         }
-        context.fillRect(x_case, y_case, this.size, this.size);
-        context.strokeRect(x_case, y_case, this.size, this.size);
+        this.p[i][j].draw();
       }
     }
   }

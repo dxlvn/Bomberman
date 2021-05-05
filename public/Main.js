@@ -51,7 +51,9 @@ var modele = new Modele(map1, joueurs);
 function frame() {
   perso1.makeMove(keys);
   if (spacePressed) {
-    j1.bombs.push(new Bomb(Math.floor((perso1.x + perso1.size/2) / map1.size), Math.floor((perso1.y + perso1.size/2) / map1.size), 150, map1));
+    if (j1.perso.dropBomb()) {
+      j1.bombs.push(new Bomb(Math.floor((perso1.x + perso1.size/2) / map1.size), Math.floor((perso1.y + perso1.size/2) / map1.size), 150, map1));
+    }
   }
   //modele.compute();
   modele.draw();
