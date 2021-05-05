@@ -32,7 +32,6 @@ class Modele {
       }
     }
     
-    console.log(this.joueurs.length);
     for (let i = 0; i < this.joueurs.length; i++) {
       this.joueurs[i].draw();
       //console.log("Vie " + this.joueurs[i].name + " : " + this.joueurs[i].vie);

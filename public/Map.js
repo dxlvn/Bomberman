@@ -14,9 +14,9 @@ class Map {
       for (let j = 0; j < this.height; j++) {
         //Crée un motif de blocs
         if (i % 2 == 1 && j % 2 == 1) {
-          this.p[i][j] = new Case(this, i,j, this.size, false);
+          this.p[i][j] = new Case(this, i, j, this.size, false);
         } else {
-          this.p[i][j] = new Case(this, i,j, this.size, true);
+          this.p[i][j] = new Case(this, i, j, this.size, true);
         }
       }
     }
@@ -29,16 +29,14 @@ class Map {
     return true;
   }
 
-  isCaseLibre(j, x, y) {
+  isCaseLibre(x, y) {
     //On vérifie si ce n'est pas hors limite
-    if ( x < 0 || y < 0 || x / this.size >= this.width || y / this.size >= this.height ) {
+    if (!this.isCaseValide) {
       return false;
     }
     //Vérifie que la case n'est pas occupée
-    if (this.p[Math.floor(x / this.size)][Math.floor(y / this.size)].isFranchissable()) {
-      return true;
-    }
-    return false;
+    console.log(x);
+    return this.p[x][y].isFranchissable();
   }
   
   compute() {

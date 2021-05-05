@@ -1,6 +1,6 @@
 //CLasse representant un joueur
 class Joueur {
-  constructor(x, y, name, m) {
+  constructor(name, x, y, m) {
     this.name = name;
     this.x = x;
     this.subX = 0;
@@ -100,13 +100,13 @@ class Joueur {
     //Test de collision
     if (
       //Teste le coin haut gauche
-      this.map.isCaseLibre(this, g, h) &&
+      this.map.isCaseLibre(g, h) &&
       //Teste le coin haut doite
-      this.map.isCaseLibre(this, d, h) &&
+      this.map.isCaseLibre(d, h) &&
       //Teste le coin bas gauche
-      this.map.isCaseLibre(this, g, b) &&
+      this.map.isCaseLibre(g, b) &&
       //Teste le coin bas droite
-      this.map.isCaseLibre(this, d, b)
+      this.map.isCaseLibre(d, b)
     ) {
       this.subX += xDep * this.dep;
       this.subY += yDep * this.dep;
@@ -172,6 +172,7 @@ class Joueur {
       this.varm = document.getElementById(this.direction + "1");
     }
     if (!(this.invisibilite > 0 && this.invisibilite%3 == 0)) {
+      console.log("Draw " + this.name + "   x = " + (this.x * this.size_case + this.subX) + "   y = " + (this.y * this.case_size) + " " + this.subY);
       context.drawImage(this.varm, this.x * this.size_case + this.subX, this.y * this.case_size + this.subY, this.size, this.size);
     }
   }
