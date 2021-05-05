@@ -3,7 +3,6 @@ class Joueur {
   constructor(x, y, name, m) {
     this.name = name;
     this.x = x;
-    this.subX;
     this.y = y;
     //Taille d'un deplacement (en pixel)
     this.dep = m.size/12;

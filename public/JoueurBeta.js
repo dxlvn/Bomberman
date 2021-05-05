@@ -84,6 +84,10 @@ class Joueur {
   //Deplace le joueur dans le x et y indiqué
   //Possibilité d'ajouter un parametre pour la direction
   move(xDep, yDep) {
+    let g = this.subX + xDep * this.dep;
+    let d = this.subX + xDep * this.dep + this.size;
+    let h = this.y + yDep * this.dep + this.size/4;
+    let b = this.y + yDep * this.dep + this.size;
     //Test de collision
     if (
       //Teste le coin haut gauche
