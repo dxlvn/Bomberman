@@ -23,6 +23,7 @@ class Map {
   }
   
   isCaseValide(x, y) {
+    //console.log("x: " + x + "   y: " + y);
     if ( x < 0 || y < 0 || x >= this.width || y >= this.height ) {
       return false;
     }
@@ -31,7 +32,7 @@ class Map {
 
   isCaseLibre(x, y) {
     //On vérifie si ce n'est pas hors limite
-    if (!this.isCaseValide) {
+    if (!this.isCaseValide(x, y)) {
       return false;
     }
     //Vérifie que la case n'est pas occupée
