@@ -31,9 +31,18 @@ class Joueur {
     //this.blood = 
   }
   
+  convertSubToCoord(a, b) {
+    if (b < 0) {
+      return a - 1;
+    } else if (b > this.size_case) {
+      return a + 1;
+    }
+    return a;
+  }
+  
   dropBomb() {
     if (this.bombCooldown == 0) {
-      var bombe = new Bomb(Math.floor((this.x + this.size/2) / this.map.size), Math.floor((this.y + this.size/2) / this.map.size), 100, this.map);
+      var bombe = new Bomb(this.convertSubToCoord(this.x, this.subX + this.size/2), this.convertSubToCoord(this.y, this.subY + this.size/2), 100, this.map);
       this.bombs.push(bombe);
       this.bombCooldown = 100;
     }
@@ -84,28 +93,20 @@ class Joueur {
   //Deplace le joueur dans le x et y indiqué
   //Possibilité d'ajouter un parametre pour la direction
   move(xDep, yDep) {
-    let g = this.subX + xDep * this.dep;
-    let d = this.subX + xDep * this.dep + this.size;
-    let h = this.y + yDep * this.dep + this.size/4;
-    let b = this.y + yDep * this.dep + this.size;
-    let coords = [g, d, h, b];
-    for (let i = 0; i < coords.length; i++) {
-      if (coords[i] < 0) {
-        coords[i] = -1;
-      } else if (coords[i] > this.size_case) {
-        coords[i] = 1;
-      }
-    }
+    let g = this.convertSubToCoord(this.x, this.subX + xDep * this.dep);
+    let d = this.convertSubToCoord(this.x, this.subX + xDep * this.dep + this.size);
+    let h = this.convertSubToCoord(this.y, this.subY + yDep * this.dep + this.size/4);
+    let b = this.convertSubToCoord(this.y, this.subY + yDep * this.dep + this.size);
     //Test de collision
     if (
       //Teste le coin haut gauche
-      this.map.isCaseLibre(this, this.x + coords[0], this.y + coords[2]) &&
+      this.map.isCaseLibre(this, g, h) &&
       //Teste le coin haut doite
-      this.map.isCaseLibre(this, this.x + coords[1], this.y + coords[2]) &&
+      this.map.isCaseLibre(this, d, h) &&
       //Teste le coin bas gauche
-      this.map.isCaseLibre(this, this.x + coords[0], this.y + coords[3]) &&
+      this.map.isCaseLibre(this, g, b) &&
       //Teste le coin bas droite
-      this.map.isCaseLibre(this, this.x + coords[1], this.y + coords[3])
+      this.map.isCaseLibre(this, d, b)
     ) {
       this.subX += xDep * this.dep;
       this.subY += yDep * this.dep;

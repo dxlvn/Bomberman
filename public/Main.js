@@ -36,7 +36,7 @@ if (tailleCase1 >tailleCase2) {
 var map1 = new Map(nbCaseX, nbCaseY, tCaseFinale, canvas); //tCaseFinale
 var j1 = new Joueur(0, 0, "Joueur 1", map1);
 
-var j2 = new Joueur(100, 0, "Joueur 2", map1);
+var j2 = new Joueur(1, 0, "Joueur 2", map1);
 
 var joueurs = [j1,j2];
 
