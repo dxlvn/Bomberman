@@ -3,8 +3,8 @@
 class Bomb {
   constructor(x, y, t, m) {
     this.r = m.size/2;
-    this.x = x * m.size + this.r;
-    this.y = y * m.size + this.r;
+    this.x = x;
+    this.y = y;
     this.t = t;
     this.m = m;
     this.isExploding = false;
@@ -18,13 +18,16 @@ class Bomb {
   draw() {
     if (this.t >= 0) {
       context.beginPath();
-      context.arc(this.x, this.y, this.r, 0, 2*Math.PI);
+      context.arc(this.x * this.m.size + this.r, this.y * this.m.size + this.r, this.r, 0, 2*Math.PI);
       context.lineWidth = 3;
       //Animation un et deux intervalle(s) avant l'explosion 
       if (this.t >= 10) {
         context.fillStyle = "#4F94FF80";
         context.strokeStyle = "#3399FF80";
-      } else if (this.t >= 0){
+        context.stroke();
+        context.fill();
+      } else if (this.t == 0){
+        this.m.p[this.x][this.y].bombExplosion = 10;
         console.log("Bombe");
         this.r *= 1.11;
         this.isExploding = true;
@@ -32,8 +35,6 @@ class Bomb {
         context.fillStyle = "#FF0A2180";
         context.strokeStyle = "#FF0A2180";
       } 
-      context.stroke();
-      context.fill();
     }
   }
 }

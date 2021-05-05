@@ -45,11 +45,6 @@ class Map {
     //Dessin des cases une par une
     for (var i = 0; i < this.width; i++) {
       for (var j = 0; j < this.height; j++) {
-        if (this.p[i][j].isFranchissable()) {
-          context.fillStyle = "white";
-        } else {
-          context.fillStyle = "black";
-        }
         this.p[i][j].draw();
       }
     }
