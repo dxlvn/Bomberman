@@ -6,7 +6,13 @@ class Joueur {
     this.y = y;
     //Taille d'un deplacement (en pixel)
     this.dep = m.size/12;
-    this.direction = "idle";
+    
+    this.seDeplace = false;
+    this.direction = "down";
+    this.frame = 1;
+    this.frameMax = 4;
+    this.interframe = 1;
+    this.interframeMax = 3;
     
     //Taille du joueur (en pixel)
     this.size = m.size - m.size/10;
@@ -49,14 +55,17 @@ class Joueur {
         //direction = "down";
       }
     }
+    this.seDeplace = true;
     if (moveDep[0][0] == 1) {
       this.direction = "right";
     } else if (moveDep[0][0] == -1) {
       this.direction = "right";
     } else if (moveDep[0][1] == 1) {
       this.direction = "down";
+    } else if (moveDep[0][1] == -1) {
+      this.direction = "up";
     } else {
-      this.direction = "idle";
+      this.seDeplace = false;
     }
     //On fait le délacement de la derniere touche
     this.move(moveDep[0][0], moveDep[0][1]);
@@ -113,7 +122,19 @@ class Joueur {
 
     // draw a rectangle with fill and stroke
     //context.fillRect(this.x, this.y, this.size, this.size);
-    this.varm = document.getElementById(this.direction);
+    if (this.seDeplace) {
+      this.varm = document.getElementById(this.direction + this.frame);
+      this.interframe ++;
+      if (this.interframe > this.interframeMax) {
+        this.interframe = 1;
+        this.frame ++;
+      }
+      if (this.frame > this.frameMax) {
+        this.frame = 1;
+      }
+    } else {
+      this.varm = document.getElementById(this.direction + "1");
+    }
     context.drawImage(this.varm,this.x, this.y,this.size, this.size);
   }
 }
