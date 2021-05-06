@@ -16,7 +16,7 @@ class Map {
         if ((i == 0 || j == 0 || i == x - 1 || j == y - 1) || ((i+1) % 2 == 1 && (j+1) % 2 == 1)) {
           this.p[i][j] = new Case(this, i, j, this.size, false, false);
         } else {
-          if(Math.random() > 0.5 || (i==1 && j==1) || (i== && j==) {
+          if(Math.random() > 0.5) {
             this.p[i][j] = new Case(this, i, j, this.size, true, false);
           } else {
             this.p[i][j] = new Case(this, i, j, this.size, false, true);
@@ -25,8 +25,27 @@ class Map {
       }
     }
   
-        //this.p[1][1] = new Case(this,1,1, this.size,true,false);
-        //this.p[2][1] = new Case(this,2,1, this.size,true,false);
+        this.p[1][1] = new Case(this,1,1, this.size,true,false);
+        this.p[2][1] = new Case(this,2,1, this.size,true,false);
+        this.p[1][2] = new Case(this,1,2, this.size,true,false);
+    
+        this.p[x-2][y-2] = new Case(this,x-2,y-2, this.size,true,false);
+        this.p[x-3][y-2] = new Case(this,x-3,y-2, this.size,true,false);
+        this.p[x-2][y-3] = new Case(this,x-2,y-3, this.size,true,false);
+    
+        this.p[1][y-2] = new Case(this,1,y-2, this.size,true,false);
+        this.p[2][y-2] = new Case(this,2,y-2, this.size,true,false);
+        this.p[1][y-3] = new Case(this,1,y-3, this.size,true,false);
+    /*
+        this.p[1][y-2] = new Case(this,1,y-2, this.size,true,false);
+        this.p[2][y-2] = new Case(this,2,y-2, this.size,true,false);
+        this.p[1][y-3] = new Case(this,1,y-3, this.size,true,false);
+    */
+        this.p[x-2][1] = new Case(this,x-2,1, this.size,true,false);
+        this.p[x-3][1] = new Case(this,x-3,1, this.size,true,false);
+        this.p[x-2][2] = new Case(this,x-2,y, this.size,true,false);
+    
+    
         
     
   }
