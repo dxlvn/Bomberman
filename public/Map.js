@@ -16,14 +16,19 @@ class Map {
         if ((i == 0 || j == 0 || i == x - 1 || j == y - 1) || ((i+1) % 2 == 1 && (j+1) % 2 == 1)) {
           this.p[i][j] = new Case(this, i, j, this.size, false, false);
         } else {
-          if(Math.random() > 0.5) {
-            this.p[i][j] = new Case(this, i, j, this.size, false, true);
-          } else {
+          if(Math.random() > 0.5 || (i==1 && j==1) || (i== && j==) {
             this.p[i][j] = new Case(this, i, j, this.size, true, false);
-          }
+          } else {
+            this.p[i][j] = new Case(this, i, j, this.size, false, true);
+          } 
         }
       }
     }
+  
+        //this.p[1][1] = new Case(this,1,1, this.size,true,false);
+        //this.p[2][1] = new Case(this,2,1, this.size,true,false);
+        
+    
   }
   
   isCaseValide(x, y) {

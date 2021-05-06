@@ -7,7 +7,7 @@ class Bomb {
     this.y = y;
     this.t = t;
     this.m = m;
-    this.force = 7;
+    this.force = 3;
     this.isExploding = false;
     this.audioExplosion = new Audio('https://cdn.glitch.com/78539be0-7261-4593-9d5a-b8d0ccd26f37%2FaudioExplosion%20(mp3cut.net).mp3?v=1619046058517');
   }
@@ -25,21 +25,9 @@ class Bomb {
       if (this.t >= 10) {
         let varm = document.getElementById("bomb");
         context.drawImage(varm, this.x * this.size, this.y * this.size, this.size, this.size);
-        /*
-        context.fillStyle = "#4F94FF80";
-        context.strokeStyle = "#3399FF80";
-        context.stroke();
-        context.fill();*/
       } else if (this.t == 0){
         this.m.p[this.x][this.y].addBombExplosion(this.force, 0, 0);
         this.audioExplosion.play();
-        /*
-        console.log("Bombe");
-        this.r *= 1.11;
-        this.isExploding = true;
-        context.fillStyle = "#FF0A2180";
-        context.strokeStyle = "#FF0A2180";
-        */
       }
     }
   }
