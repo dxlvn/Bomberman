@@ -2,7 +2,7 @@
 //CLasse representant un joueur
 class Bomb {
   constructor(x, y, t, m) {
-    this.r = m.size/2;
+    this.size = m.size;
     this.x = x;
     this.y = y;
     this.t = t;
@@ -23,10 +23,13 @@ class Bomb {
       context.lineWidth = 3;
       //Animation un et deux intervalle(s) avant l'explosion 
       if (this.t >= 10) {
+        let varm = document.getElementById("bomb");
+        context.drawImage(varm, this.x * this.size, this.y * this.size, this.size, this.size);
+        /*
         context.fillStyle = "#4F94FF80";
         context.strokeStyle = "#3399FF80";
         context.stroke();
-        context.fill();
+        context.fill();*/
       } else if (this.t == 0){
         this.m.p[this.x][this.y].addBombExplosion(this.force, 0, 0);
         this.audioExplosion.play();
