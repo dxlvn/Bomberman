@@ -6,7 +6,7 @@ class Case {
     this.size = size;
     this.franchissable = franchissable;
     if (cassable) {
-      ht
+      this.franchissable = false;
     }
     this.cassable = cassable;
     this.bombExplosion = 0;
@@ -22,30 +22,29 @@ class Case {
   addBombExplosion(force, x, y) {
     if (this.franchissable && force > 0) {
       this.bombExplosion = force;
-      if (this.cassable) {
-        this.cassable = false;
-        this.franchissable = false;
-        this.bombExplosion = 1;
-      }
       if (x == 0 && y == 0) {
         for (let i = 0; i < 4; i++) {
-          let directionX = i%2;
+          let directionX = i % 2;
           if (i == 3) {
             directionX = -directionX;
           }
-          let directionY = (i+1)%2;
+          let directionY = (i + 1) % 2;
           if (i == 2) {
             directionY = -directionY;
           }
           if (this.map.isCaseValide(this.x + directionX, this.y + directionY)) {
-            this.map.p[this.x + directionX][this.y + directionY].addBombExplosion(force -1, directionX, directionY);
+            this.map.p[this.x + directionX][this.y + directionY].addBombExplosion(force - 1, directionX, directionY);
           }
         }
       } else {
         if (this.map.isCaseValide(this.x + x, this.y + y)) {
-            this.map.p[this.x + x][this.y + y].addBombExplosion(force -1, x, y);
-          }
+          this.map.p[this.x + x][this.y + y].addBombExplosion(force - 1, x, y);
+        }
       }
+    } else if (this.cassable) {
+      this.cassable = false;
+      this.franchissable = true;
+      this.bombExplosion = 1;
     }
   }
 
@@ -68,6 +67,8 @@ class Case {
     } else {
       if (this.isFranchissable()) {
         context.fillStyle = "white";
+      } else if (this.cassable) {
+        context.fillStyle = "gray";
       } else {
         context.fillStyle = "black";
       }

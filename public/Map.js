@@ -2,8 +2,6 @@
 class Map {
   constructor(x, y, size_case, canvas) {
     //Regle la taille du canvas
-    x = x + 2;
-    y = y + 2;
     canvas.width = x * size_case;
     canvas.height = y * size_case;
     this.height = y;
@@ -16,9 +14,13 @@ class Map {
       for (let j = 0; j < this.height; j++) {
         //Crée un motif de blocs
         if ((i == 0 || j == 0 || i == x - 1 || j == y - 1) || ((i+1) % 2 == 1 && (j+1) % 2 == 1)) {
-          this.p[i][j] = new Case(this, i, j, this.size, false);
+          this.p[i][j] = new Case(this, i, j, this.size, false, false);
         } else {
-          this.p[i][j] = new Case(this, i, j, this.size, true);
+          if(Math.random() > 0.5) {
+            this.p[i][j] = new Case(this, i, j, this.size, false, true);
+          } else {
+            this.p[i][j] = new Case(this, i, j, this.size, true, false);
+          }
         }
       }
     }
@@ -34,9 +36,9 @@ class Map {
 
   isCaseLibre(x, y) {
     //On vérifie si ce n'est pas hors limite
-    if (!this.isCaseValide(x, y)) {
-      return false;
-    }
+    //if (!this.isCaseValide(x, y)) {
+    //  return false;
+    //}
     //Vérifie que la case n'est pas occupée
     return this.p[x][y].isFranchissable();
   }
