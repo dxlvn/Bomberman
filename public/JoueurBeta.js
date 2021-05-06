@@ -118,7 +118,7 @@ class Joueur {
         this.x ++;
         this.subX -= this.size_case;
       }
-      if (this.subX < 0) {
+      if (this.subY < 0) {
         this.y --;
         this.subY += this.size_case;
       } else if (this.subY > this.size_case) {
@@ -142,6 +142,10 @@ class Joueur {
   }
   
   compute() {
+    if (this.invinsibilite == 0 && this.map[this.x][this.y].bombExplosion > 0) {
+      this.vie --;
+      this.invinsibilite
+    }
     if (this.bombCooldown > 0) {
       this.bombCooldown --;
     }
