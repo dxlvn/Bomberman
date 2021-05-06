@@ -1,10 +1,14 @@
 class Case {
-  constructor(m, x, y, size, franchissable) {
+  constructor(m, x, y, size, franchissable, cassable) {
     this.map = m;
     this.x = x;
     this.y = y;
     this.size = size;
     this.franchissable = franchissable;
+    if (cassable) {
+      ht
+    }
+    this.cassable = cassable;
     this.bombExplosion = 0;
     this.bombDirection = [0, 0];
     this.bombTime = 0;
@@ -18,6 +22,11 @@ class Case {
   addBombExplosion(force, x, y) {
     if (this.franchissable && force > 0) {
       this.bombExplosion = force;
+      if (this.cassable) {
+        this.cassable = false;
+        this.franchissable = false;
+        this.bombExplosion = 1;
+      }
       if (x == 0 && y == 0) {
         for (let i = 0; i < 4; i++) {
           let directionX = i%2;

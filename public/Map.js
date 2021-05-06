@@ -2,6 +2,8 @@
 class Map {
   constructor(x, y, size_case, canvas) {
     //Regle la taille du canvas
+    x = x + 2;
+    y = y + 2;
     canvas.width = x * size_case;
     canvas.height = y * size_case;
     this.height = y;
@@ -13,7 +15,7 @@ class Map {
       this.p[i] = [];
       for (let j = 0; j < this.height; j++) {
         //Crée un motif de blocs
-        if (i % 2 == 1 && j % 2 == 1) {
+        if ((i == 0 || j == 0 || i == x - 1 || j == y - 1) || ((i+1) % 2 == 1 && (j+1) % 2 == 1)) {
           this.p[i][j] = new Case(this, i, j, this.size, false);
         } else {
           this.p[i][j] = new Case(this, i, j, this.size, true);

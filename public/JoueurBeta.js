@@ -135,7 +135,6 @@ class Joueur {
       let h = this.convertSubToCoord(this.y, this.subY + this.size/4);
       let b = this.convertSubToCoord(this.y, this.subY + this.size);
       if (this.map.p[g][h].bombExplosion > 0 || this.map.p[d][h].bombExplosion > 0 || this.map.p[g][b].bombExplosion > 0 || this.map.p[d][b].bombExplosion > 0) {
-        console.log("Touche ! " + this.vie);
         this.vie--;
         this.shield = 12;
       }
@@ -175,7 +174,6 @@ class Joueur {
     } else {
       this.varm = document.getElementById(this.direction + "1");
     }
-    console.log(this.shield);
     if (this.shield % 3 == 0) {
       context.drawImage(this.varm, this.x * this.size_case + this.subX, this.y * this.size_case + this.subY, this.size, this.size);
     }
