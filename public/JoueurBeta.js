@@ -22,7 +22,7 @@ class Joueur {
     this.map = m;
     
     this.vie = 3;
-    this.invinsibilite = 0;
+    this.shield = 0;
     
     this.nombreBombMax = 1;
     this.bombs = [];
@@ -129,28 +129,28 @@ class Joueur {
   }
   
   testPrendDegat() {
-    
-  }
-  
-  prendDegats() {
-    if (this.vie > 0 && this.invinsibilite == 0) {
-      this.vie--;
-      this.invinsibilite = 12;
+    if (this.vie > 0 && this.shield == 0) {
+      let g = this.convertSubToCoord(this.x, this.subX);
+      let d = this.convertSubToCoord(this.x, this.subX + this.size);
+      let h = this.convertSubToCoord(this.y, this.subY + this.size/4);
+      let b = this.convertSubToCoord(this.y, this.subY + this.size);
+      if (this.map.p[g][h].bombExplosion > 0 || this.map.p[d][h].bombExplosion > 0 || this.map.p[g][b].bombExplosion > 0 || this.map.p[d][b].bombExplosion > 0) {
+        console.log("Touche ! " + this.vie);
+        this.vie--;
+        this.shield = 12;
+      }
     } else if (this.vie == 0) {
       this.vie--;
     }
   }
   
   compute() {
-    if (this.invinsibilite == 0 && this.map[this.x][this.y].bombExplosion > 0) {
-      this.vie --;
-      this.invinsibilite
-    }
+    this.testPrendDegat();
     if (this.bombCooldown > 0) {
       this.bombCooldown --;
     }
-    if (this.invinsibilite > 0) {
-      this.invinsibilite--;
+    if (this.shield > 0) {
+      this.shield--;
     }
   }
 
@@ -175,7 +175,8 @@ class Joueur {
     } else {
       this.varm = document.getElementById(this.direction + "1");
     }
-    if (!(this.invisibilite > 0 && this.invisibilite%3 == 0)) {
+    console.log(this.shield);
+    if (this.shield % 3 == 0) {
       context.drawImage(this.varm, this.x * this.size_case + this.subX, this.y * this.size_case + this.subY, this.size, this.size);
     }
   }

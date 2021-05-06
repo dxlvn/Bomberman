@@ -49,7 +49,6 @@ function frame() {
   if (spacePressed) {
     j1.dropBomb()
   }
-  console.log(j1.x + " " + j1.y);
   modele.compute();
   modele.draw();
 }
