@@ -24,26 +24,22 @@ class Map {
         }
       }
     }
-  
+        //HG
         this.p[1][1] = new Case(this,1,1, this.size,true,false);
         this.p[2][1] = new Case(this,2,1, this.size,true,false);
         this.p[1][2] = new Case(this,1,2, this.size,true,false);
-    
+        //BD
         this.p[x-2][y-2] = new Case(this,x-2,y-2, this.size,true,false);
         this.p[x-3][y-2] = new Case(this,x-3,y-2, this.size,true,false);
         this.p[x-2][y-3] = new Case(this,x-2,y-3, this.size,true,false);
-    
+        //BG
         this.p[1][y-2] = new Case(this,1,y-2, this.size,true,false);
         this.p[2][y-2] = new Case(this,2,y-2, this.size,true,false);
         this.p[1][y-3] = new Case(this,1,y-3, this.size,true,false);
-    /*
-        this.p[1][y-2] = new Case(this,1,y-2, this.size,true,false);
-        this.p[2][y-2] = new Case(this,2,y-2, this.size,true,false);
-        this.p[1][y-3] = new Case(this,1,y-3, this.size,true,false);
-    */
+        //HD
         this.p[x-2][1] = new Case(this,x-2,1, this.size,true,false);
         this.p[x-3][1] = new Case(this,x-3,1, this.size,true,false);
-        this.p[x-2][2] = new Case(this,x-2,y, this.size,true,false);
+        this.p[x-2][2] = new Case(this,x-2,2, this.size,true,false);
     
     
         
