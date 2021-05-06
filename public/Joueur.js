@@ -3,7 +3,10 @@ class Joueur {
   constructor(x, y, name, m) {
     this.name = name;
     this.x = x;
+    this.subX = 0;
     this.y = y;
+    this.subY = 0;
+    this.size_case = m.size;
     //Taille d'un deplacement (en pixel)
     this.dep = m.size/12;
     
@@ -19,7 +22,7 @@ class Joueur {
     this.map = m;
     
     this.vie = 3;
-    this.invinsibilite = 0;
+    this.shield = 0;
     
     this.nombreBombMax = 1;
     this.bombs = [];
@@ -28,9 +31,18 @@ class Joueur {
     //this.blood = 
   }
   
+  convertSubToCoord(a, b) {
+    if (b < 0) {
+      return a - 1;
+    } else if (b > this.size_case) {
+      return a + 1;
+    }
+    return a;
+  }
+  
   dropBomb() {
     if (this.bombCooldown == 0) {
-      var bombe = new Bomb(Math.floor((this.x + this.size/2) / this.map.size), Math.floor((this.y + this.size/2) / this.map.size), 100, this.map);
+      var bombe = new Bomb(this.convertSubToCoord(this.x, this.subX + this.size/2), this.convertSubToCoord(this.y, this.subY + this.size/2), 100, this.map);
       this.bombs.push(bombe);
       this.bombCooldown = 100;
     }
@@ -81,41 +93,63 @@ class Joueur {
   //Deplace le joueur dans le x et y indiqué
   //Possibilité d'ajouter un parametre pour la direction
   move(xDep, yDep) {
+    let g = this.convertSubToCoord(this.x, this.subX + xDep * this.dep);
+    let d = this.convertSubToCoord(this.x, this.subX + xDep * this.dep + this.size);
+    let h = this.convertSubToCoord(this.y, this.subY + yDep * this.dep + this.size/4);
+    let b = this.convertSubToCoord(this.y, this.subY + yDep * this.dep + this.size);
     //Test de collision
     if (
       //Teste le coin haut gauche
-      this.map.isCaseLibre(this, this.x + xDep * this.dep, this.y + yDep * this.dep + this.size/4) &&
+      this.map.isCaseLibre(g, h) &&
       //Teste le coin haut doite
-      this.map.isCaseLibre(this, this.x + xDep * this.dep + this.size, this.y + yDep * this.dep + this.size/4) &&
+      this.map.isCaseLibre(d, h) &&
       //Teste le coin bas gauche
-      this.map.isCaseLibre(this, this.x + xDep * this.dep, this.y + yDep * this.dep + this.size) &&
+      this.map.isCaseLibre(g, b) &&
       //Teste le coin bas droite
-      this.map.isCaseLibre(this, this.x + xDep * this.dep + this.size, this.y + yDep * this.dep + this.size)
+      this.map.isCaseLibre(d, b)
     ) {
-      this.x += xDep * this.dep;
-      this.y += yDep * this.dep;
+      this.subX += xDep * this.dep;
+      this.subY += yDep * this.dep;
+      
+      if (this.subX < 0) {
+        this.x --;
+        this.subX += this.size_case;
+      } else if (this.subX > this.size_case) {
+        this.x ++;
+        this.subX -= this.size_case;
+      }
+      if (this.subY < 0) {
+        this.y --;
+        this.subY += this.size_case;
+      } else if (this.subY > this.size_case) {
+        this.y ++;
+        this.subY -= this.size_case;
+      }
     }
   }
   
   testPrendDegat() {
-    
-  }
-  
-  prendDegats() {
-    if (this.vie > 0 && this.invinsibilite == 0) {
-      this.vie--;
-      this.invinsibilite = 12;
+    if (this.vie > 0 && this.shield == 0) {
+      let g = this.convertSubToCoord(this.x, this.subX);
+      let d = this.convertSubToCoord(this.x, this.subX + this.size);
+      let h = this.convertSubToCoord(this.y, this.subY + this.size/4);
+      let b = this.convertSubToCoord(this.y, this.subY + this.size);
+      if (this.map.p[g][h].bombExplosion > 0 || this.map.p[d][h].bombExplosion > 0 || this.map.p[g][b].bombExplosion > 0 || this.map.p[d][b].bombExplosion > 0) {
+        this.vie--;
+        this.shield = 12;
+      }
     } else if (this.vie == 0) {
       this.vie--;
     }
   }
   
   compute() {
+    this.testPrendDegat();
     if (this.bombCooldown > 0) {
       this.bombCooldown --;
     }
-    if (this.invinsibilite > 0) {
-      this.invinsibilite--;
+    if (this.shield > 0) {
+      this.shield--;
     }
   }
 
@@ -140,8 +174,8 @@ class Joueur {
     } else {
       this.varm = document.getElementById(this.direction + "1");
     }
-    if (!(this.invisibilite > 0 && this.invisibilite%3 == 0)) {
-      context.drawImage(this.varm,this.x, this.y,this.size, this.size);
+    if (this.shield % 3 == 0) {
+      context.drawImage(this.varm, this.x * this.size_case + this.subX, this.y * this.size_case + this.subY, this.size, this.size);
     }
   }
 }
