@@ -61,20 +61,21 @@ class Case {
   }
 
   draw() {
+    let varm;
     if (this.bombExplosion > 0) {
-      context.fillStyle = "#FF0A2180";
-      context.strokeStyle = "#FF0A2180";
-    } else {
+      varm = document.getElementById("explosion");
+    }  else {
       if (this.isFranchissable()) {
-        context.fillStyle = "white";
+        varm = document.getElementById("path");
       } else if (this.cassable) {
-        context.fillStyle = "gray";
+        varm = document.getElementById("breakable");
       } else {
-        context.fillStyle = "black";
+        varm = document.getElementById("wall");
       }
       context.strokeStyle = "black";
     }
-    context.fillRect(
+    context.drawImage(varm, this.x * this.size, this.y * this.size, this.size, this.size);
+    /*context.fillRect(
       this.x * this.size,
       this.y * this.size,
       this.size,
@@ -85,6 +86,6 @@ class Case {
       this.y * this.size,
       this.size,
       this.size
-    );
+    );*/
   }
 }
