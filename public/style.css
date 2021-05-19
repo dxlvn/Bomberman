@@ -10,6 +10,14 @@ body {
   font-size: 28px;
 }
 
+#myVideo {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+}
+
 /* Permet d'afficher une grille */
 /*canvas {
   margin: auto;
@@ -45,6 +53,7 @@ h1 {
   font-size: 16px;
   border-radius: 12px;
 }
+
 /*BARRE d'etat
 .c100{
     width: 100%;
