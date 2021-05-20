@@ -51,26 +51,34 @@
             <!--id="signup" -->
             <div id="JoinaGame" >
               <h2>Join a Game</h2>
-              
+              <!--action="/signin"  id="verifForm"-->
+              <form action="/joinagame" method="post" id="creationForm">
+                <div class="field-wrap">
+                  <label>Nom du Joueur<span class="req">*</span></label>
+                  <input type="text" name="nom" requiredautocomplete="off"/>
+                </div>
+                
+                <div class="field-wrap">
+                  <label>Link<span class="req">*</span></label>
+                  <input type="text" name="link" requiredautocomplete="off"/>
+                </div>
+                
+              </form>
               
             </div>
-            
-            
-            
-            
-            
-            
             
           </div>
       
           <br>
           <br>
+          <!--
           <form action="/page.html">
             <label for="pseudo">Pseudo:</label><br>
             <input type="text" id="pseudo" name="pseudo"><br>
             <br>
             <input class="button" type="submit" value="Submit">
           </form> 
+          -->
           <!--<a href="page.html" class="button">Visit our game here !</a>-->
           <!--https://developer.mozilla.org/fr/docs/Learn/JavaScript/Client-side_web_APIs/Fetching_data -->
           </div>
@@ -86,6 +94,7 @@
     
     
     </p>
+  <script type="text/javascript" src="js/"
   </body>
 </html>
 
