@@ -35,7 +35,7 @@ class Modele {
     for (let i = 0; i < this.joueurs.length; i++) {
       this.joueurs[i].draw();
       //console.log("Vie " + this.joueurs[i].name + " : " + this.joueurs[i].vie);
-      if (this.joueurs[i].vie == 0) {
+      if (this.joueurs[i].vie <= 0) {
         alert("Game over  " + this.joueurs[i].name);
       }
     }
