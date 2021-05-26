@@ -17,12 +17,19 @@ app.get("/", (request, response) => {
   response.sendFile(__dirname + "/views/index.html");
 });
 
-
-app.get('/test', function(req, res){
-   res.send('GET route on things.');
+app.get('/chat/:room', function(req, res) {
+  res.sendFile(__dirname + '/public/page.html');
 });
-app.post('/test', function(req, res){
-   res.send('POST route on things.');
+
+io.on('connection', function(socket){
+    // put the client in the requested room
+    socket.on("joinRoom", function(room) {
+        // only allow certain characters in room names
+        // to prevent messing with socket.io internal rooms
+        if (!(/[^\w.]/.test(room))) {
+            socket.join(room);
+        }
+    });
 });
 
 // listen for requests :)

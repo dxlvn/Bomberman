@@ -58,6 +58,20 @@
     <script type="text/javascript" src="Modele.js"></script>
     <script type="text/javascript" src="Controlleur.js"></script>
     <script type="text/javascript" src="Main.js"></script>
+    
+    <script>
+      var socket = io();
+      socket.on('connected', function() {
+        // get path from current URL
+        let room = window.location.pathname.slice(6);   // remove leading /chat/
+        let pos = room.indexOf('/');
+        if (pos !== -1) {
+            room = room.slice(0, pos);
+        }
+        socket.emit("joinRoom", room);
+    });
+    </script>
+    
     <!--<div class="conteneur-barre"><span class="barre c100"></span></div>-->
   </body>
 </html>
