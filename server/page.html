@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <link rel="shortcut icon" href="#" />
+    <meta charset="UTF-8" />
+    
+    <title>BomberMan</title>
+    
+    <link rel="stylesheet" href="/style.css" />
+    <script src="/socket.io/socket.io.js"></script>
+  </head>
+  <body>
+    <img id="up1" width="300" height="300" style="display:none" src="https://cdn.glitch.com/78539be0-7261-4593-9d5a-b8d0ccd26f37%2Fup1.png?v=1620227565188"/>
+    <img id="up2" width="300" height="300" style="display:none" src="https://cdn.glitch.com/78539be0-7261-4593-9d5a-b8d0ccd26f37%2Fup2.png?v=1620227565189"/>
+    <img id="up3" width="300" height="300" style="display:none" src="https://cdn.glitch.com/78539be0-7261-4593-9d5a-b8d0ccd26f37%2Fup3.png?v=1620227565189"/>
+    <img id="up4" width="300" height="300" style="display:none" src="https://cdn.glitch.com/78539be0-7261-4593-9d5a-b8d0ccd26f37%2Fup4.png?v=1620227565189"/>
+    <img id="down1" width="300" height="300" style="display:none" src="https://cdn.glitch.com/78539be0-7261-4593-9d5a-b8d0ccd26f37%2Fdown1.png?v=1620227565189"/>
+    <img id="down2" width="300" height="300" style="display:none" src="https://cdn.glitch.com/78539be0-7261-4593-9d5a-b8d0ccd26f37%2Fdown2.png?v=1620227565286"/>
+    <img id="down3" width="300" height="300" style="display:none" src="https://cdn.glitch.com/78539be0-7261-4593-9d5a-b8d0ccd26f37%2Fdown3.png?v=1620227565273"/>
+    <img id="down4" width="300" height="300" style="display:none" src="https://cdn.glitch.com/78539be0-7261-4593-9d5a-b8d0ccd26f37%2Fdown4.png?v=1620227565386"/>
+    <img id="right1" width="300" height="300" style="display:none" src="https://cdn.glitch.com/78539be0-7261-4593-9d5a-b8d0ccd26f37%2Fright1.png?v=1620227565189"/>
+    <img id="right2" width="300" height="300" style="display:none" src="https://cdn.glitch.com/78539be0-7261-4593-9d5a-b8d0ccd26f37%2Fright2.png?v=1620227565189"/>
+    <img id="right3" width="300" height="300" style="display:none" src="https://cdn.glitch.com/78539be0-7261-4593-9d5a-b8d0ccd26f37%2Fright3.png?v=1620227804944"/>
+    <img id="right4" width="300" height="300" style="display:none" src="https://cdn.glitch.com/78539be0-7261-4593-9d5a-b8d0ccd26f37%2Fright4.png?v=1620227565262"/>
+    <img id="left1" width="300" height="300" style="display:none" src="https://cdn.glitch.com/78539be0-7261-4593-9d5a-b8d0ccd26f37%2Fleft1.png?v=1620228749783"/>
+    <img id="left2" width="300" height="300" style="display:none" src="https://cdn.glitch.com/78539be0-7261-4593-9d5a-b8d0ccd26f37%2Fleft2.png?v=1620228749783"/>
+    <img id="left3" width="300" height="300" style="display:none" src="https://cdn.glitch.com/78539be0-7261-4593-9d5a-b8d0ccd26f37%2Fleft3.png?v=1620228749783"/>
+    <img id="left4" width="300" height="300" style="display:none" src="https://cdn.glitch.com/78539be0-7261-4593-9d5a-b8d0ccd26f37%2Fleft4.png?v=1620228749782"/>
+    <img id="wall" width="300" height="300" style="display:none" src="https://cdn.glitch.com/78539be0-7261-4593-9d5a-b8d0ccd26f37%2Fwall.png?v=1620299753534"/>
+    <img id="path" width="300" height="300" style="display:none" src="https://cdn.glitch.com/78539be0-7261-4593-9d5a-b8d0ccd26f37%2Fpath.png?v=1620299753660"/>
+    <img id="breakable" width="300" height="300" style="display:none" src="https://cdn.glitch.com/78539be0-7261-4593-9d5a-b8d0ccd26f37%2Fbreakable.png?v=1620299749581"/>
+    <img id="explosion" width="300" height="300" style="display:none" src="https://cdn.glitch.com/78539be0-7261-4593-9d5a-b8d0ccd26f37%2Fexplosion.png?v=1620300096492"/>
+    <img id="bomb" width="300" height="300" style="display:none" src="https://cdn.glitch.com/78539be0-7261-4593-9d5a-b8d0ccd26f37%2Fbomb2.png?v=1620301257651"/>
+
+    <canvas width="200" height="200" id="map"></canvas>
+    <script type="text/javascript" src="/Joueur.js"></script>
+    <script type="text/javascript" src="/Bomb.js"></script>
+    <script type="text/javascript" src="/Case.js"></script>
+    <script type="text/javascript" src="/Map.js"></script>
+    <script type="text/javascript" src="/Modele.js"></script>
+    <script type="text/javascript" src="/Controlleur.js"></script>
+    <script type="text/javascript" src="/Main.js"></script>
+	
+	<button onclick="ready()"> Pret ? </button>
+	
+    <script>
+      var socket = io();
+
+      var getRoom = function() {
+        // get path from current URL
+        var room = window.location.pathname.slice(6); // remove leading /room/
+        let pos = room.indexOf("/");
+        if (pos !== -1) {
+          room = room.slice(0, pos);
+        }
+        return room;
+      };
+
+      socket.on("connect", function() {
+        console.log("Connexion serveur");
+        // get path from current URL
+        let room = getRoom();
+        socket.emit("joinRoom", room);
+      });
+
+      // emits message from user side
+      var send = function() {
+        var msg = document.getElementById("msg").value;
+        let room = getRoom();
+        socket.emit("message", { "room": room, "text": msg });
+      };
+      
+      var ready = function() {
+        socket.emit("ready");
+      };
+
+      var receive = function(msg) {
+        var li = document.createElement("li");
+        li.innerText = msg;
+        document.getElementById("messages").appendChild(li);
+      };
+
+      socket.on("message", receive);
+    </script>
+
+    <!--<div class="conteneur-barre"><span class="barre c100"></span></div>-->
+  </body>
+</html>

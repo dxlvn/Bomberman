@@ -56,9 +56,9 @@ class Map {
 
   isCaseLibre(x, y) {
     //On vérifie si ce n'est pas hors limite
-    //if (!this.isCaseValide(x, y)) {
-    //  return false;
-    //}
+    if (!this.isCaseValide(x, y)) {
+      return false;
+    }
     //Vérifie que la case n'est pas occupée
     return this.p[x][y].isFranchissable();
   }

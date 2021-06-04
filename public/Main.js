@@ -1,56 +1,45 @@
+function makeModele() {
+	var INTERVAL = 30;
+	var spacePressed = false;
+	var keys = [];
 
-/*
-import * as Map from './Map.js'
-import Joueur from "Joueur.js";
-import Modele from "Modele2.js";
-import Bomb from "Bomb.js";
-import { keyDownHandler, keyUpHandler } from "Controlleur.js";*/
+	document.addEventListener("keydown", keyDownHandler, false);
+	document.addEventListener("keyup", keyUpHandler, false);
 
-const canvas = document.getElementById("map");
-// get the context
-var context = canvas.getContext("2d");
+	// appel pour l'affichage
+	var nbCaseX = 21;
+	var nbCaseY = 15;
+	nbCaseX += 2;
+	nbCaseY += 2;
 
-var INTERVAL = 30;
-var spacePressed = false;
-var keys = [];
-
-document.addEventListener("keydown", keyDownHandler, false);
-document.addEventListener("keyup", keyUpHandler, false);
-
-// appel pour l'affichage
-var nbCaseX = 21;
-var nbCaseY = 15;
-nbCaseX += 2;
-nbCaseY += 2;
-
-var screenHeight = window.innerHeight * (4/5);
-var screenWidth = window.innerWidth * (4/5);
+	var screenHeight = window.innerHeight * (4/5);
+	var screenWidth = window.innerWidth * (4/5);
 
 
-var tailleCase1 = screenHeight / nbCaseY;
-var tailleCase2 = screenWidth / nbCaseX;
+	var tailleCase1 = screenHeight / nbCaseY;
+	var tailleCase2 = screenWidth / nbCaseX;
 
-var tCaseFinale = Math.floor(tailleCase1);
-if (tailleCase1 >tailleCase2) {
-  tCaseFinale = Math.floor(tailleCase2);
+	var tCaseFinale = Math.floor(tailleCase1);
+	if (tailleCase1 >tailleCase2) {
+	  tCaseFinale = Math.floor(tailleCase2);
+	}
+
+	var map = new Map(nbCaseX, nbCaseY, tCaseFinale, canvas); //tCaseFinale
+
+	var j1 = new Joueur(1, 1, "Joueur 1", map);
+
+	var j2 = new Joueur(nbCaseX - 2, 1, "Joueur 2", map);
+
+	var j3 = new Joueur(1, nbCaseY - 2, "Joueur 3", map);
+
+	var j4 = new Joueur(nbCaseX - 2, nbCaseY - 2, "Joueur 4", map);
+
+	var joueurs = [j1,j2,j3,j4];
+
+	var modele = new Modele(map, joueurs);
+	return modele;
 }
 
-var map = new Map(nbCaseX, nbCaseY, tCaseFinale, canvas); //tCaseFinale
-
-var j1 = new Joueur(1, 1, "Joueur 1", map);
-
-var j2 = new Joueur(nbCaseX - 2, 1, "Joueur 2", map);
-
-var j3 = new Joueur(1, nbCaseY - 2, "Joueur 3", map);
-
-var j4 = new Joueur(nbCaseX - 2, nbCaseY - 2, "Joueur 4", map);
-
-var joueurs = [j1,j2,j3,j4];
-
-var modele = new Modele(map, joueurs);
-
-
-//window.addEventListener("keydown", doKeyDown, true);
 function frame() {
   j1.makeMove(keys);
   if (spacePressed) {
@@ -60,5 +49,9 @@ function frame() {
   modele.draw();
 }
 
-setInterval(frame, INTERVAL);
-// la bombe ne se place pas comme il faut c'est tjrs en haut a gauche, le principe de la partie entiere et tt ne marche pas
+function start() {
+	setInterval(frame, INTERVAL);
+}
+
+let modele = makeModele();
+modele.draw();

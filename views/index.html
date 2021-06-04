@@ -1,107 +1,74 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <link rel="shortcut icon" href="#" />
-    <meta charset="UTF-8" />
-    <title>BomberMan</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    
-    <br />
-    <p>
-      
-      <div id="videoDiv">
-        <video autoplay loop id="myVideo">
-          <source src="https://cdn.glitch.com/78539be0-7261-4593-9d5a-b8d0ccd26f37%2FINTRO.mp4?v=1621417636457" type="video/mp4">
-        </video>
-        
-        <!--id="form"-->
-        <div id="videoForm" class="styling">
-          
-          <b>HOME</b> <br />
-          <b> Bomber'S</b>
-          
-          
-          
-          <!--
-          <ul class="tab-group">
-            <li class="tab active"><a href="#CreateaGame">Create a Game</a> </li>
-            <li class="tab"><a href="#JoinaGame">Joint a Game</a> </li>
-          </ul>
-          
-          <div class="tab-content">
-            <!--id=login -->
-          <!--
-            <div id="CreateaGame">
-              <h2>Welcome Back!</h2>
-              <!-- action="/login"-->
-          <!--
-              <form action="CreateaGame" method="post">
-                <div class="field-wrap">
-                  <label> Pseudo<span class="req">*</span></label>
-                  <input type="text" name="nom_joueur" required autocomplete="off" />
-                </div>
-                <div class="field-wrap">
-                  <label>Créer un Room<span class="req">*</span></label>
-                  <input type="text" name="RoomLink" required autocomplete="off" /><button>Generate Link</button>
-                </div>
-                <button class="submitClick" type="submit">Let's Start</button>
-              </form>  
-            </div> 
-            <!--id="signup" -->
-          <!--
-            <div id="JoinaGame" >
-              <h2>Join a Game</h2>
-              <!--action="/signin"  id="verifForm"-->
-          <!--
-              <form action="/joinagame" method="post" id="creationForm">
-                <div class="field-wrap">
-                  <label>Nom du Joueur<span class="req">*</span></label>
-                  <input type="text" name="nom" requiredautocomplete="off"/>
-                </div>
-                
-                <div class="field-wrap">
-                  <label>Link<span class="req">*</span></label>
-                  <input type="text" name="link" requiredautocomplete="off"/>
-                </div>
-                
-              </form>
-              
-            </div>
-            
-          </div>
-          -->
-        
-        
-        
-        
-          <br>
-          <br>
-          
-          
-          
-          <form action="/page.html">
-            <label for="pseudo">Pseudo:</label><br>
-            <input type="text" id="pseudo" name="pseudo"><br>
-            <br>
-            <label for="link">Link:</label><br>
-            <input type="text" id="link" name="link"><br>
-            <br>
-            
-            <input class="button" type="generateLink()" value="Generate"><input class="button" type="submit" value="Submit">
-          </form> 
-          
-          <!--<a href="page.html" class="button">Visit our game here !</a>-->
-          <!--https://developer.mozilla.org/fr/docs/Learn/JavaScript/Client-side_web_APIs/Fetching_data -->
-          </div>
-        
-      </div>
-    
-    
-    </p>
-  <script type="text/javascript" src="js/template.js"></script>
-  <footer></footer>
-  </body>
+	<head>
+		<link rel="shortcut icon" href="#" />
+		<meta charset="UTF-8" />
+		<title>BomberMan</title>
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<br />
+		<p></p>
+		
+		<div id="videoDiv">
+			<video autoplay loop id="myVideo" controls muted>
+				<source 
+				src="https://cdn.glitch.com/78539be0-7261-4593-9d5a-b8d0ccd26f37%2FINTRO.mp4?v=1621417636457" 
+				type="video/mp4"/>
+			</video>
+			
+			<div id="videoForm" class="styling">
+				<div id="carre">
+				<b>HOME</b>
+				<br />
+				<b>Bomber'S</b>
+				<br/>
+				<br/>
+				
+				<script>
+					var registerName = function() {
+						localStorage.setItem("Pseudo",document.getElementById("pseudo").value);
+					}
+					
+					var go = function() {
+						if (document.getElementById("pseudo").value != "") {
+							registerName();
+							let val = document.getElementById("link").value;
+							if (document.getElementById("link").value != "") {
+								document.location.href = document.location.href + "room/" + val;
+							}
+						}
+					}
+					
+					var generateRoom = function() {
+						if (document.getElementById("pseudo").value != "") {
+							registerName();
+							let val = Math.random().toString().substr(2, 8);
+							document.location.href = document.location.href + "room/" + val;
+						}
+					}
+				</script>
+				
+				<label for="pseudo">Pseudo:</label><br />
+				<input type="text" id="pseudo" name="pseudo"/><br />
+				<br/>
+				<label for="link">Link:</label><br />
+				<input type="text" id="link" name="link" /><br />
+				<br />
+				
+				<input
+				class="button"
+				  onclick="generateRoom()"
+				  type="submit"
+				  value="Créer une salle"/>
+				<input
+				class="button"
+				  onclick="go()"
+				  type="submit"
+				  value="Rejoindre une salle"/>
+				
+			</div>
+		</div>
+	</body>
 </html>
-
+		
